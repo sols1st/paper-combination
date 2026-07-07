@@ -7,6 +7,7 @@
 - [3. 可行性分析](#3-可行性分析)
 - [4. 总体合成架构](#4-总体合成架构)
 - [5. 数学理论适配](#5-数学理论适配)
+- [5½. 随机扰动的处理：三种方案详解](#5½-随机扰动的处理三种方案详解)
 - [6. 代码修改详细方案](#6-代码修改详细方案)
 - [7. 新训练流程](#7-新训练流程)
 - [8. 实验方案](#8-实验方案)
@@ -232,20 +233,15 @@ b̈ = (1/std1) · (-v̇)
 - **SBC**：显式建模随机扰动 `Δs ~ μ`，提供概率性安全保证
 - **BarrierNet**：确定性框架，无扰动建模
 
-**解决方案：**
-1. **方案A（推荐）：鲁棒BarrierNet** — 将扰动视为有界不确定性，在 QP 约束中加入鲁棒裕量：
-   ```
-   h_robust = h_nominal - L_b · ||Δs||_max
-   ```
-   其中 `L_b` 为障碍函数的 Lipschitz 常数，`||Δs||_max` 为扰动上界。
+**解决方案（详细推导见第 5½ 节）：**
 
-2. **方案B：概率BarrierNet** — 将扰动分布信息融入 HOCBF 约束：
-   ```
-   P(Gu ≤ h - noise_effect) ≥ 1 - ε
-   ```
-   转化为 chance constraint QP。
+1. **方案A（推荐）：鲁棒HOCBF** — 将扰动视为有界不确定性，在 HOCBF 约束中减去最坏情况裕量 $\kappa(\delta_{\max}) = \delta_{\max}(p_1 + p_2 + p_1 p_2)$。确定性 100% 安全保证，但保守性较高。
 
-3. **方案C：混合方案** — 用 BarrierNet 做在线安全过滤 + 用 SafePVC 的扰动估计做离线分析。
+2. **方案B：机会约束HOCBF** — 假设扰动服从高斯分布，将 HOCBF 约束转化为 chance constraint：$\mathbb{P}[\text{safe}] \geq 1-\epsilon$。保守性较低，但提供的是概率性保证。
+
+3. **方案C：自适应数据驱动裕量** — 用网络学习状态依赖的裕量 $\kappa(z)$。最灵活但安全保证最弱。
+
+> 📌 **完整的扰动传播分析、数学推导、代码实现和方案对比，见第 5½ 节「随机扰动的处理：三种方案详解」。**
 
 #### ✅ 条件5：实时性要求
 
@@ -317,7 +313,8 @@ BarrierNet 的 QP 求解开销：
 │  │  │  │                                         │                   │    │   │
 │  │  │  │  G = -LgLfb = dt                        │                   │    │   │
 │  │  │  │  h = Lf²b + (p₁+p₂)ḃ + p₁p₂b          │                   │    │   │
-│  │  │  │      - L_b · Δs_max    ← 鲁棒裕量      │                   │    │   │
+│  │  │  │      - κ(δ_max)    ← 鲁棒裕量          │                   │    │   │
+│  │  │  │  κ = δ_max·(p₁+p₂+p₁p₂)               │                   │    │   │
 │  │  │  └─────────────────────────────────────────┘                   │    │   │
 │  │  │           │                                                    │    │   │
 │  │  │           ▼                                                    │    │   │
@@ -466,37 +463,45 @@ s.t. (-1)·u ≤ -(p₁+p₂)·v + p₁·p₂·(d - d_safe)    → Gu ≤ h
 
 #### 鲁棒化扩展（处理随机扰动）
 
+> 📌 **此处为简要概述。完整的扰动传播分析、三种方案的详细推导和对比，见第 5½ 节。**
+
 设扰动 Δs = [Δd, Δv] 满足 ||Δs||_∞ ≤ δ，障碍函数 Lipschitz 常数为 L_b：
 
 ```
-鲁棒 HOCBF 约束:
-L_f² b + (L_g L_f b)·u + (p₁+p₂)·ḃ + p₁·p₂·b - L_b·||Δs||_max ≥ 0
+鲁棒 HOCBF 约束 (方案 A 简版):
+L_f² b + (L_g L_f b)·u + (p₁+p₂)·ḃ + p₁·p₂·b - κ(δ) ≥ 0
 
 其中:
-  L_b = ||∇b||₂ = 1  (对于 b = d - d_safe)
-  ||Δs||_max = max(|Δd|, |Δv|) = noise_factor × state_range
+  κ(δ) = δ · (p₁ + p₂ + p₁·p₂)    ← 精确的扰动传播裕量 (见 5½.2)
+  
+  注意: 这里比简单用 L_b·δ 更精确，
+  因为扰动不仅影响 b，还通过 ḃ = -v 影响约束的 (p₁+p₂) 项。
 
 鲁棒化 h:
-h_robust = h_nominal - δ
-
-δ = L_b × noise_factor × max(state_range)
-  = 1 × factor × max(d_range, v_range)
-  = factor × 3.0  (v_range = 3.0 为较大者)
+h_robust = h_nominal - δ · (p₁ + p₂ + p₁·p₂)
 ```
+
+其他两种方案（机会约束 HOCBF、自适应数据驱动裕量）见 5½.3 和 5½.4 节。
 
 #### 安全定理
 
 ```
 定理 (BarrierNet-AEBS 安全保证):
 
-若 p₁(z), p₂(z) > 0 且 Lipschitz 连续，则在控制律
-u*(x) = QP 解
-下，闭环系统满足 b(x(t)) ≥ 0, ∀t ≥ 0，
+若无扰动 (δ=0)，且 p₁(z), p₂(z) > 0 且 Lipschitz 连续，
+则在控制律 u*(x) = QP 解 下，
+闭环系统满足 b(x(t)) ≥ 0, ∀t ≥ 0，
 即 d(t) ≥ d_safe, ∀t ≥ 0。
 
-在鲁棒化扩展下，若扰动 ||Δs|| ≤ δ，
-则 d(t) ≥ d_safe - ε(δ), ∀t ≥ 0，
-其中 ε(δ) 为扰动导致的退化量。
+定理 (鲁棒化扩展, 方案 A):
+若扰动 ||ε||_∞ ≤ δ_max，使用鲁棒裕量 κ = δ_max·(p₁+p₂+p₁p₂)，
+则闭环系统仍满足 b(x(t)) ≥ 0, ∀t ≥ 0。
+(证明概要见 5½.2 节)
+
+定理 (机会约束扩展, 方案 B):
+若扰动 ε ~ N(μ, Σ)，使用分位数裕量 Φ⁻¹(1-ε)·σ_W，
+则单步安全概率 P[b(x_{t+1}) ≥ 0 | x_t] ≥ 1-ε。
+(推导见 5½.3 节)
 ```
 
 ### 5.3 与原论文理论的对比
@@ -506,9 +511,580 @@ u*(x) = QP 解
 | 核心定理 | 超鞅递减 + 可选停止定理 | HOCBF 前向不变性 |
 | 安全类型 | 概率保证 P_safe ≥ p | 确定性保证 b(x) ≥ 0 |
 | 时间范围 | 无限时域（鞅的可选停止） | 无限时域（前向不变性） |
-| 扰动处理 | 显式建模 Δs ~ μ | 鲁棒裕量 δ |
+| 扰动处理 | 显式建模 Δs ~ μ | 三种方案: 鲁棒裕量 κ / 机会约束 / 自适应 (见 5½ 节) |
 | 证书构造 | 学习神经网络 B(s) | 安全-by-construction (QP) |
 | 验证方式 | IBP + 网格搜索 | 闭环仿真 + 解析证明 |
+
+---
+
+## 5½. 随机扰动的处理：三种方案详解
+
+> **这是整个合成方案中最关键的理论难点。** SafePVC 的核心场景是有随机环境扰动的视觉控制系统，而 BarrierNet 原生是确定性框架。本节详细分析扰动如何传播、如何将其融入 HOCBF-QP 框架，并给出三种从保守到激进的解决方案。
+
+### 5½.1 扰动传播机制分析
+
+#### SafePVC 中的扰动模型（原始设定）
+
+SafePVC 的系统存在不可观测的环境扰动 $z_t$，其传播链条为：
+
+```
+环境扰动 z_t ∈ Z (不可观测)
+     │
+     ▼
+观测模型: o_t = g(s_t, z_t)      ← cGAN/MLP 近似，z 影响生成的图像
+     │
+     ▼
+策略网络: u_t = π(o_t)            ← 视觉控制器基于（受扰的）图像做决策
+     │
+     ▼
+系统动力学: s_{t+1} = f(s_t, u_t) ← 受扰的控制输入导致偏离标称轨迹
+```
+
+SafePVC 将这个链条整体建模为一个**等价状态扰动**：
+
+$$
+s_{t+1} = F(s_t, z_0) + \Delta s, \quad \Delta s \sim \mu
+$$
+
+其中 $F(s, z_0)$ 是参考环境条件下的标称闭环动力学，$\Delta s = F(s, z) - F(s, z_0)$ 是由环境变化引起的状态偏差，被建模为**与当前状态独立的随机变量**（Assumption 1），分布 $\mu$ 通过数据驱动方式估计。
+
+#### BarrierNet 需要面对的问题
+
+在合成系统中，扰动的传播路径变为：
+
+```
+                    SafePVC 前端 (保留)                    BarrierNet 后端 (新)
+                    ─────────────────────                  ────────────────────
+
+真实状态 s_t ───→ cGAN g(s_t, z_t) ──→ 图像 o_t ──→ state_net ──→ ŝ_t = s_t + ε_state
+                                                              │
+                                                              ▼
+                                              u_t = BarrierNet(ŝ_t)
+                                                              │
+                                                              ▼
+                                              s_{t+1} = f(s_t, u_t) + δ_dynamics
+```
+
+扰动通过**两条路径**影响系统安全：
+
+**路径 ①：感知误差（Perception Error）**
+$$
+\varepsilon_{\text{state}} = \hat{s}_t - s_t
+$$
+由于 $z_t$ 影响生成的图像，state_net 的状态估计 $\hat{s}_t$ 会偏离真实状态 $s_t$。BarrierNet 基于 $\hat{s}_t$ 而非 $s_t$ 做决策，导致 HOCBF 约束被错误地评估。
+
+**路径 ②：动力学扰动（Dynamics Disturbance）**
+$$
+\delta_{\text{dyn}} \in \mathbb{R}^2
+$$
+即使控制输入 $u_t$ 是正确的，执行后系统也可能因为外部因素（风、路面摩擦变化等）偏离预期轨迹。SafePVC 的 $\Delta s$ 实际上包含了这条路径和路径①的综合效果。
+
+#### 量化扰动对 HOCBF 约束的影响
+
+设真实状态为 $x = [d, v]^\top$，BarrierNet 使用的估计状态为 $\hat{x} = x + \varepsilon$，其中 $\varepsilon = [\varepsilon_d, \varepsilon_v]^\top$。
+
+对于 AEBS 系统的障碍函数 $b(x) = d - d_{\text{safe}}$：
+
+$$
+b(\hat{x}) = \hat{d} - d_{\text{safe}} = (d + \varepsilon_d) - d_{\text{safe}} = b(x) + \varepsilon_d
+$$
+
+对 HOCBF 约束各分项的影响：
+
+$$
+\begin{aligned}
+b(\hat{x}) &= b(x) + \varepsilon_d & \text{误差: } \Delta_b &= \varepsilon_d \\
+\dot{b}(\hat{x}) &= -\hat{v} = -(v + \varepsilon_v) & \text{误差: } \Delta_{\dot{b}} &= -\varepsilon_v \\
+L_f^2 b(\hat{x}) &= 0 & \text{误差: } \Delta_{L_f^2 b} &= 0 \\
+L_g L_f b(\hat{x}) &= 1 & \text{误差: } \Delta_{L_g L_f b} &= 0
+\end{aligned}
+$$
+
+因此，BarrierNet 基于估计状态 $\hat{x}$ 构建的 HOCBF 约束为：
+
+$$
+\underbrace{0}_{L_f^2 b} + \underbrace{1}_{L_g L_f b} \cdot u + (p_1 + p_2) \cdot \underbrace{(-v - \varepsilon_v)}_{\dot{b}(\hat{x})} + p_1 p_2 \cdot \underbrace{(d + \varepsilon_d - d_{\text{safe}})}_{b(\hat{x})} \geq 0
+$$
+
+而**我们真正需要满足的**是基于真实状态 $x$ 的约束。两者之差为：
+
+$$
+\Delta_{\text{HOCBF}} = (p_1 + p_2)(-\varepsilon_v) + p_1 p_2 \cdot \varepsilon_d
+$$
+
+这意味着：**当 $\varepsilon_d > 0$（高估距离）且 $\varepsilon_v < 0$（低估速度）时，HOCBF 约束被虚假放松，系统可能在不安全的情况下"以为"自己安全。** 这正是扰动带来的危险。
+
+---
+
+### 5½.2 方案 A：鲁棒 HOCBF（Worst-case Bound）— 推荐
+
+#### 核心思想
+
+将扰动视为**有界不确定性**，在 HOCBF 约束中减去**最坏情况下的扰动影响**，确保即使扰动取到极端值，安全约束仍然满足。
+
+#### 扰动假设
+
+$$
+\|\varepsilon\|_\infty = \max(|\varepsilon_d|, |\varepsilon_v|) \leq \delta_{\max}
+$$
+
+其中 $\delta_{\max}$ 可以从 SafePVC 的数据驱动扰动估计中获得（见 5½.5 节）。
+
+#### 鲁棒化推导
+
+基于真实状态的 HOCBF 约束为：
+
+$$
+L_f^2 b(x) + [L_g L_f b(x)] u + (p_1 + p_2) \dot{b}(x) + p_1 p_2 b(x) \geq 0
+$$
+
+但 BarrierNet 只能基于估计状态 $\hat{x}$ 构建约束。我们需要确保：**即使 $\hat{x}$ 和 $x$ 之间存在误差，基于 $\hat{x}$ 构建的约束仍能保护真实状态 $x$ 的安全。**
+
+基于 $\hat{x}$ 构建的约束值 $h(\hat{x})$ 与基于真实 $x$ 的约束值 $h(x)$ 之间的关系：
+
+$$
+h(\hat{x}) = h(x) + \Delta_{\text{HOCBF}}
+$$
+
+其中：
+
+$$
+\Delta_{\text{HOCBF}} = (p_1 + p_2)(-\varepsilon_v) + p_1 p_2 \cdot \varepsilon_d
+$$
+
+在最坏情况下（$\varepsilon_v = +\delta_{\max}$, $\varepsilon_d = -\delta_{\max}$，即**高估速度、低估距离**——对安全最不利）：
+
+$$
+\Delta_{\text{HOCBF}}^{\text{worst}} = -(p_1 + p_2) \delta_{\max} - p_1 p_2 \cdot \delta_{\max} = -\delta_{\max}(p_1 + p_2 + p_1 p_2)
+$$
+
+因此，鲁棒化的 HOCBF 约束为：
+
+$$
+\boxed{
+L_f^2 b(\hat{x}) + [L_g L_f b(\hat{x})] u + (p_1 + p_2) \dot{b}(\hat{x}) + p_1 p_2 b(\hat{x}) - \delta_{\max}(p_1 + p_2 + p_1 p_2) \geq 0
+}
+$$
+
+#### 对应的 QP 修改
+
+在 AEBS 系统中展开：
+
+$$
+u \geq (p_1 + p_2) \hat{v} - p_1 p_2 (\hat{d} - d_{\text{safe}}) + \delta_{\max}(p_1 + p_2 + p_1 p_2)
+$$
+
+对应标准 QP 的 $h$ 向量变为：
+
+$$
+h_{\text{robust}} = \underbrace{-(p_1 + p_2) \hat{v} + p_1 p_2 (\hat{d} - d_{\text{safe}})}_{h_{\text{nominal}}} - \underbrace{\delta_{\max}(p_1 + p_2 + p_1 p_2)}_{\text{robust margin } \kappa(\delta_{\max})}
+$$
+
+注意 $G = [-1]$ 不变，鲁棒化只影响 $h$。
+
+#### 安全性定理
+
+> **定理（鲁棒 BarrierNet-AEBS 安全保证）**
+> 
+> 设 $p_1(z), p_2(z) > 0$ 且 Lipschitz 连续。若扰动满足 $\|\varepsilon\|_\infty \leq \delta_{\max}$，则在鲁棒 HOCBF-QP 控制律下，闭环系统满足：
+> 
+> $$b(x(t)) \geq 0, \quad \forall t \geq 0$$
+> 
+> 即 $d(t) \geq d_{\text{safe}}, \forall t \geq 0$，**即使存在有界扰动**。
+
+**证明概要：** 在每个时刻 $t$，鲁棒化约束确保：
+
+$$
+h(\hat{x}_t) - \kappa(\delta_{\max}) \geq 0 \implies h(x_t) \geq h(\hat{x}_t) - |\Delta_{\text{HOCBF}}| \geq h(\hat{x}_t) - \kappa(\delta_{\max}) \geq 0
+$$
+
+由 HOCBF 定理（BarrierNet 论文 Theorem 8），$h(x_t) \geq 0$ 递推保证 $\psi_0(x_t) = b(x_t) \geq 0$。$\blacksquare$
+
+#### 保守性分析
+
+鲁棒裕量 $\kappa(\delta_{\max}) = \delta_{\max}(p_1 + p_2 + p_1 p_2)$。
+
+当 $p_1, p_2 \in (0, 4)$（由 Sigmoid × 4 保证）时：
+- 最小裕量：$p_1 \to 0, p_2 \to 0$ 时 $\kappa \to 0$
+- 最大裕量：$p_1 = p_2 = 4$ 时 $\kappa = \delta_{\max}(4 + 4 + 16) = 24 \delta_{\max}$
+
+**问题**：当 $p_1, p_2$ 较大时，鲁棒裕量会很大，可能导致 QP 约束过于保守（要求很大的加速度）甚至无可行解。
+
+**缓解方法**：训练过程中，$\mathcal{L}_{\text{smooth}} = \lambda_{\text{smooth}} \cdot \text{mean}(p_1 + p_2)$ 会自然惩罚过大的 $p$ 值，使网络学习到在安全裕量和保守性之间的平衡。
+
+#### 代码实现要点
+
+```python
+# 在 _hocbf_qp 方法中，h_hocbf 的计算修改为：
+
+# 鲁棒裕量
+p1, p2 = p[:, 0], p[:, 1]
+kappa = self.delta_max * (p1 + p2 + p1 * p2)  # [B]
+
+# 鲁棒化 h
+h_hocbf = (Lf2b 
+           + (p1 + p2) * b_dot 
+           + p1 * p2 * b 
+           - kappa).view(nBatch, 1)  # 减去鲁棒裕量
+```
+
+---
+
+### 5½.3 方案 B：机会约束 HOCBF（Chance-Constrained）
+
+#### 核心思想
+
+不要求**所有**扰动下都安全（太保守），而是要求**以高概率**安全：
+
+$$
+\mathbb{P}_{\varepsilon}\big[\text{HOCBF 约束满足}\big] \geq 1 - \epsilon
+$$
+
+其中 $\epsilon \in (0, 1)$ 是允许的风险水平（例如 $\epsilon = 0.05$）。
+
+#### 扰动分布假设
+
+假设通过 SafePVC 的数据驱动方法（见 5½.5 节），我们已经估计出：
+
+$$
+\varepsilon_d \sim \mathcal{N}(\mu_d, \sigma_d^2), \quad \varepsilon_v \sim \mathcal{N}(\mu_v, \sigma_v^2)
+$$
+
+两者独立（或已知协方差矩阵 $\Sigma$）。
+
+#### 推导
+
+基于估计状态的 HOCBF 约束为：
+
+$$
+C(\hat{x}, u) := L_f^2 b(\hat{x}) + [L_g L_f b(\hat{x})] u + (p_1 + p_2) \dot{b}(\hat{x}) + p_1 p_2 b(\hat{x}) \geq 0
+$$
+
+对于 AEBS 系统，将真实状态 $x = \hat{x} - \varepsilon$ 代入：
+
+$$
+C(x, u) = u - (p_1 + p_2) v + p_1 p_2 (d - d_{\text{safe}})
+$$
+
+$$
+C(\hat{x} - \varepsilon, u) = u - (p_1 + p_2)(\hat{v} - \varepsilon_v) + p_1 p_2 (\hat{d} - \varepsilon_d - d_{\text{safe}})
+$$
+
+$$
+= \underbrace{C(\hat{x}, u)}_{\text{nominal}} + \underbrace{(p_1 + p_2) \varepsilon_v - p_1 p_2 \varepsilon_d}_{\text{stochastic term } W}
+$$
+
+随机项 $W$ 的分布：
+
+$$
+W = (p_1 + p_2) \varepsilon_v - p_1 p_2 \varepsilon_d
+$$
+
+$$
+W \sim \mathcal{N}\Big((p_1 + p_2) \mu_v - p_1 p_2 \mu_d, \quad (p_1 + p_2)^2 \sigma_v^2 + (p_1 p_2)^2 \sigma_d^2\Big)
+$$
+
+记 $W \sim \mathcal{N}(\mu_W, \sigma_W^2)$，其中：
+
+$$
+\mu_W = (p_1 + p_2) \mu_v - p_1 p_2 \mu_d
+$$
+
+$$
+\sigma_W = \sqrt{(p_1 + p_2)^2 \sigma_v^2 + (p_1 p_2)^2 \sigma_d^2}
+$$
+
+机会约束 $\mathbb{P}[C(\hat{x}, u) + W \geq 0] \geq 1 - \epsilon$ 等价于：
+
+$$
+C(\hat{x}, u) + \mu_W \geq \Phi^{-1}(1 - \epsilon) \cdot \sigma_W
+$$
+
+其中 $\Phi^{-1}$ 是标准正态分布的逆 CDF（分位函数）。
+
+整理得到**确定性等价的 HOCBF 约束**：
+
+$$
+\boxed{
+C(\hat{x}, u) \geq -\mu_W + \Phi^{-1}(1 - \epsilon) \cdot \sigma_W
+}
+$$
+
+#### 具体展开
+
+$$
+u \geq (p_1 + p_2) \hat{v} - p_1 p_2 (\hat{d} - d_{\text{safe}}) - \mu_W + \Phi^{-1}(1 - \epsilon) \cdot \sigma_W
+$$
+
+对应 QP 的 $h$ 向量：
+
+$$
+h_{\text{chance}} = h_{\text{nominal}} - \mu_W + \Phi^{-1}(1 - \epsilon) \cdot \sigma_W
+$$
+
+**注意**：$\mu_W$ 和 $\sigma_W$ 都依赖于 $p_1, p_2$，而 $p_1, p_2$ 是网络的输出，所以 $h$ 仍然是 $p$ 的非线性函数。这在端到端训练中是可微的（$\Phi^{-1}$ 是常数，$\sigma_W$ 是关于 $p$ 的平滑函数）。
+
+#### 数值例子
+
+设 $\mu_d = \mu_v = 0$（零均值扰动），$\sigma_d = 0.1$ m，$\sigma_v = 0.05$ m/s，$\epsilon = 0.05$：
+
+- $\Phi^{-1}(0.95) = 1.645$
+- $\mu_W = 0$
+- $\sigma_W = \sqrt{(p_1 + p_2)^2 \times 0.0025 + (p_1 p_2)^2 \times 0.01}$
+
+当 $p_1 = p_2 = 2$ 时：
+- $\sigma_W = \sqrt{16 \times 0.0025 + 16 \times 0.01} = \sqrt{0.04 + 0.16} = \sqrt{0.2} \approx 0.447$
+- 裕量 $= 1.645 \times 0.447 \approx 0.735$
+
+对比方案 A（$\delta_{\max} = 3\sigma = 0.3$）：
+- $\kappa = 0.3 \times (2 + 2 + 4) = 2.4$
+
+**Chance-constrained 的裕量 (0.735) 远小于 worst-case 的裕量 (2.4)**，保守性大幅降低，代价是允许 5% 的概率违反约束。
+
+#### 安全性讨论
+
+> **定理（机会约束 BarrierNet 安全保证）**
+> 
+> 在扰动 $\varepsilon \sim \mathcal{N}(\mu, \Sigma)$ 的假设下，Chance-Constrained HOCBF-QP 控制律保证：
+> 
+> $$\mathbb{P}[b(x(t)) \geq 0] \geq (1 - \epsilon)^t, \quad \forall t \geq 0$$
+> 
+> 即单步安全概率 $\geq 1 - \epsilon$，多步安全概率随时间指数衰减。
+> 
+> **注意**：这比 SafePVC 的 SBC 弱（SBC 保证无限时域的概率下界），但比纯确定性方法在有扰动时更实际。
+
+#### 代码实现要点
+
+```python
+from scipy.stats import norm
+
+class ChanceConstrainedBarrierNet(BarrierNetAEBS):
+    def __init__(self, ..., epsilon=0.05, mu_d=0.0, mu_v=0.0, sigma_d=0.1, sigma_v=0.05):
+        super().__init__(...)
+        self.epsilon = epsilon
+        self.mu_d, self.mu_v = mu_d, mu_v
+        self.sigma_d, self.sigma_v = sigma_d, sigma_v
+        self.z_score = norm.ppf(1 - epsilon)  # Φ⁻¹(1-ε), 常数
+    
+    def _hocbf_qp(self, state, q, p, nBatch, sgn):
+        # ... (前面和原来一样) ...
+        
+        p1, p2 = p[:, 0], p[:, 1]
+        
+        # 计算 μ_W 和 σ_W
+        mu_W = (p1 + p2) * self.mu_v - p1 * p2 * self.mu_d  # [B]
+        sigma_W = torch.sqrt(
+            (p1 + p2)**2 * self.sigma_v**2 + 
+            (p1 * p2)**2 * self.sigma_d**2
+        )  # [B]
+        
+        # Chance-constrained 裕量
+        cc_margin = -mu_W + self.z_score * sigma_W  # [B]
+        
+        h_hocbf = (Lf2b + (p1 + p2) * b_dot + p1 * p2 * b - cc_margin).view(nBatch, 1)
+        
+        # ... (后面和原来一样) ...
+```
+
+---
+
+### 5½.4 方案 C：自适应数据驱动裕量（Adaptive Learned Margin）
+
+#### 核心思想
+
+方案 A 和 B 都需要手动设定扰动上界 $\delta_{\max}$ 或分布参数 $(\mu, \Sigma)$。方案 C 更进一步：**用一个小型神经网络从数据中自适应地学习鲁棒裕量**，让网络自己决定在每个状态下需要多大的安全裕量。
+
+#### 架构设计
+
+在上游网络中新增一个**裕量输出头**（Margin Head）：
+
+```
+上游网络
+├── 主干 FC(d_est, v)
+│   ├── q 头 → 参考控制 q(z)
+│   ├── p 头 → 惩罚参数 p₁(z), p₂(z)
+│   └── κ 头 → 鲁棒裕量 κ(z) ← 新增！
+```
+
+HOCBF 约束变为：
+
+$$
+L_f^2 b + [L_g L_f b] u + (p_1 + p_2) \dot{b} + p_1 p_2 b - \kappa(z) \geq 0
+$$
+
+其中 $\kappa(z) \geq 0$ 是网络学习到的状态依赖裕量。
+
+#### 训练策略：两阶段法
+
+**阶段一：扰动数据收集（复用 SafePVC 的方法）**
+
+利用 SafePVC 的 `Distribution_Estimation` 模块（Algorithm 1 Line 7），收集扰动数据：
+
+```python
+# 对每个状态 s_i，在参考环境 z_0 和扰动环境 z 下分别仿真
+for s_i in state_grid:
+    s_nominal = step(s_i, pi(s_i, z_0), z_0)  # 标称下一状态
+    for z_j in perturbation_samples:
+        s_perturbed = step(s_i, pi(s_i, z_j), z_j)  # 扰动下一状态
+        delta_s = s_perturbed - s_nominal
+        disturbance_dataset.append((s_i, delta_s))
+```
+
+**阶段二：裕量网络训练**
+
+$\kappa$ 头的训练目标：学习一个映射 $\kappa: \hat{x} \to \mathbb{R}_{\geq 0}$，使得：
+
+$$
+\mathcal{L}_\kappa = \mathbb{E}_{(\hat{x}, \Delta s) \sim \mathcal{D}}\Big[\max\big(0, \Delta_{\text{HOCBF}}(\hat{x}, \Delta s) - \kappa(\hat{x})\big)^2\Big] + \lambda_\kappa \cdot \mathbb{E}[\kappa(\hat{x})]
+$$
+
+第一项确保 $\kappa(\hat{x})$ 足够大以覆盖实际扰动影响，第二项惩罚过大的裕量（避免保守）。
+
+#### 安全保证的弱化
+
+方案 C 不提供严格的确定性保证（因为 $\kappa$ 是从有限数据学习的），但提供了**经验性的安全保证**：
+
+> **经验安全声明**
+> 
+> 若 $\kappa$ 网络在测试集上覆盖了 $\alpha\%$ 的扰动样本（即 $\kappa(\hat{x}) \geq |\Delta_{\text{HOCBF}}|$ 对 $\alpha\%$ 的样本成立），则闭环系统的安全率**经验性地** $\geq \alpha\%$。
+
+这类似于 SafePVC 的概率安全界，但通过仿真而非鞅理论来获得。
+
+#### 代码实现要点
+
+```python
+class AdaptiveBarrierNet(BarrierNetAEBS):
+    def __init__(self, ...):
+        super().__init__(...)
+        # 新增 κ 头
+        self.fc23 = nn.Linear(self.hidden1, 32)
+        self.bn23 = nn.BatchNorm1d(32)
+        self.fc33 = nn.Linear(32, 1)
+    
+    def forward(self, state, sgn=1):
+        # ... 主干 ...
+        x = torch.relu(self.fc1(state))
+        x = self.bn1(x)
+        
+        # p 头
+        x22 = torch.relu(self.fc22(x))
+        x22 = self.bn22(x22)
+        p = 4.0 * torch.sigmoid(self.fc32(x22))
+        
+        # κ 头 (自适应裕量, Softplus 确保非负)
+        x23 = torch.relu(self.fc23(x))
+        x23 = self.bn23(x23)
+        kappa = F.softplus(self.fc33(x23))  # [B, 1], κ ≥ 0
+        
+        # ... q 头 + QP (使用 kappa 替代固定 robust_margin) ...
+```
+
+---
+
+### 5½.5 与 SafePVC 扰动估计模块的对接
+
+SafePVC 已经有一套完整的数据驱动扰动估计流程（Remark 1 + Algorithm 1 Line 7），我们可以**直接复用**其输出来为方案 A/B/C 提供参数。
+
+#### SafePVC 的 Distribution_Estimation 输出
+
+```python
+def Distribution_Estimation(VCLS, f, z_0, z_samples, S):
+    """
+    SafePVC 原有的扰动估计模块。
+    
+    输出: Δs 的经验分布，用于 SBC 的 Monte Carlo 采样验证。
+    我们将其复用为 BarrierNet 鲁棒裕量的输入。
+    """
+    deltas = []
+    for s in S:  # 离散状态网格
+        s_nom = f(s, VCLS.pi(s, z_0))       # 标称转移
+        for z in z_samples:                   # 扰动采样
+            s_pert = f(s, VCLS.pi(s, z))      # 扰动转移
+            deltas.append(s_pert - s_nom)
+    
+    deltas = np.array(deltas)  # shape: (N_states × N_samples, 2)
+    return deltas
+```
+
+#### 从扰动数据提取各方案参数
+
+```python
+def extract_disturbance_params(deltas, method='robust'):
+    """
+    从 SafePVC 的扰动数据中提取 BarrierNet 需要的参数。
+    
+    deltas: shape (N, 2), 列 = [Δd, Δv]
+    """
+    delta_d = deltas[:, 0]
+    delta_v = deltas[:, 1]
+    
+    if method == 'robust':
+        # 方案 A: 最坏情况 bound
+        delta_max = max(np.abs(delta_d).max(), np.abs(delta_v).max())
+        return {'delta_max': delta_max}
+    
+    elif method == 'chance':
+        # 方案 B: 高斯拟合
+        mu_d, sigma_d = np.mean(delta_d), np.std(delta_d)
+        mu_v, sigma_v = np.mean(delta_v), np.std(delta_v)
+        return {'mu_d': mu_d, 'sigma_d': sigma_d, 
+                'mu_v': mu_v, 'sigma_v': sigma_v}
+    
+    elif method == 'adaptive':
+        # 方案 C: 返回完整数据集用于训练 κ 网络
+        return {'deltas': deltas}
+```
+
+#### 典型数值（基于 SafePVC 论文的 CARLA AEBS 实验）
+
+SafePVC 论文中使用噪声因子为状态空间跨度的 1%~10%。以 5% 为例：
+
+$$
+\begin{aligned}
+d_{\text{range}} &= 16 - 5 = 11 \text{ m} \implies \delta_d^{\max} = 0.05 \times 11 = 0.55 \text{ m} \\
+v_{\text{range}} &= 3 - 0 = 3 \text{ m/s} \implies \delta_v^{\max} = 0.05 \times 3 = 0.15 \text{ m/s}
+\end{aligned}
+$$
+
+| 参数 | 方案A (Robust) | 方案B (Chance, ε=0.05) |
+|------|--------------|---------------------|
+| 扰动上界/标准差 | $\delta_{\max} = 0.55$ | $\sigma_d \approx 0.18, \sigma_v \approx 0.05$ |
+| 当 $p_1 = p_2 = 2$ 时的裕量 | $0.55 \times 8 = 4.4$ | $1.645 \times \sqrt{16 \times 0.0025 + 16 \times 0.032} \approx 1.22$ |
+| 保守程度 | 高 | 中 |
+| 安全保证 | 确定性 (100%) | 概率性 (95%/步) |
+
+---
+
+### 5½.6 三种方案对比与选择建议
+
+| 维度 | 方案 A: 鲁棒 HOCBF | 方案 B: 机会约束 | 方案 C: 自适应裕量 |
+|------|-------------------|-----------------|-------------------|
+| **扰动假设** | 有界 $\|\varepsilon\| \leq \delta_{\max}$ | 已知分布 $\varepsilon \sim \mathcal{N}(\mu, \Sigma)$ | 从数据学习，无需显式假设 |
+| **安全保证** | 确定性 (100%) | 概率性 ($1 - \epsilon$ /步) | 经验性 (依赖训练数据覆盖) |
+| **保守性** | 🔴 高（最坏情况） | 🟡 中（分位数） | 🟢 低（数据驱动自适应） |
+| **QP 可行性** | 🔴 裕量大时易无解 | 🟡 偶尔无解 | 🟢 网络可学习避免 |
+| **实现复杂度** | 🟢 低（改一行 $h$） | 🟡 中（加入 $\sigma_W$ 计算） | 🟡 中（新增网络头 + 预训练） |
+| **可微性** | ✅ 完全可微 | ✅ 完全可微 | ✅ 完全可微 |
+| **理论严谨性** | 🟢 强（解析证明） | 🟡 中（依赖分布假设） | 🔴 弱（仅经验保证） |
+| **与 SafePVC 对比** | 比 SBC 更保守但更强 | 最接近 SBC 的概率保证 | 最灵活但最不安全 |
+
+#### 推荐策略
+
+**首选方案 A（鲁棒 HOCBF）**，理由：
+1. **实现最简单**：只需在 $h$ 中减去一个常数项，改动最小
+2. **理论最严谨**：有解析的安全证明，论文贡献更扎实
+3. **与 BarrierNet 原论文一致**：BarrierNet 本身就是确定性框架，鲁棒扩展是最自然的
+4. **安全保证最强**：在论文中可以和 SafePVC 的概率保证形成鲜明对比
+
+**在实验中同时测试方案 B**，理由：
+1. 方案 B 的保守性更低，控制性能更好
+2. 可以与方案 A 做 ablation 对比，展示 trade-off
+3. 概率保证与 SafePVC 的 SBC 保证可以定量比较
+
+**方案 C 作为 Future Work**，理由：
+1. 理论上最有趣，但安全保证最弱
+2. 适合作为"可扩展方向"在论文 Discussion 中提及
+3. 实验验证需要更多工程工作
 
 ---
 
@@ -538,8 +1114,11 @@ class BarrierNetAEBS(nn.Module):
     
     HOCBF QP:
         min  ½u² + q·u
-        s.t. u ≥ (p₁+p₂)·v - p₁·p₂·(d - d_safe) - robust_margin
+        s.t. u ≥ (p₁+p₂)·v - p₁·p₂·(d - d_safe) + κ(δ_max)
              u_min ≤ u ≤ u_max
+             
+        鲁棒裕量: κ(δ_max) = δ_max · (p₁ + p₂ + p₁·p₂)
+        详见 5½.2 节推导
     """
     
     def __init__(
@@ -566,13 +1145,13 @@ class BarrierNetAEBS(nn.Module):
         self.noise_factor = noise_factor
         self.device = device
         
-        # 计算鲁棒裕量
-        # L_b = 1/std1 (b = d_norm - d_safe_norm 的梯度范数)
-        # delta = L_b * noise_factor * state_range
-        d_range = (16.0 - 5.0) / std1  # 归一化距离范围
-        v_range = 3.0                   # 速度范围
-        self.L_b = 1.0 / std1
-        self.robust_margin = self.L_b * noise_factor * max(d_range * std1, v_range)
+        # 计算扰动上界 δ_max (见 5½.2 节)
+        # δ_max = noise_factor × max(state_range)
+        d_range = 16.0 - 5.0  # 距离范围 (m)
+        v_range = 3.0          # 速度范围 (m/s)
+        self.delta_max = noise_factor * max(d_range, v_range)
+        # 注意: 鲁棒裕量 κ = δ_max · (p₁ + p₂ + p₁·p₂) 是动态的,
+        # 依赖于网络输出的 p₁, p₂, 在 _hocbf_qp 中实时计算
         
         # ========== 上游网络 ==========
         # 主干
@@ -655,15 +1234,23 @@ class BarrierNetAEBS(nn.Module):
         p_vector = q.view(nBatch, 1)
         
         # HOCBF 约束: Gu ≤ h
-        # 约束: u ≥ (p₁+p₂)·v - p₁·p₂·b - robust_margin
-        # 等价: -u ≤ -(p₁+p₂)·v + p₁·p₂·b + robust_margin
-        # 即 G = [-1], h = -(p₁+p₂)·v + p₁·p₂·b + robust_margin
+        # 约束: u ≥ (p₁+p₂)·v - p₁·p₂·b + κ(δ_max)
+        # 等价: -u ≤ -(p₁+p₂)·v + p₁·p₂·b - κ(δ_max)
+        # 即 G = [-1], h = -(p₁+p₂)·v + p₁·p₂·b - κ
+        #
+        # 鲁棒裕量 κ = δ_max · (p₁ + p₂ + p₁·p₂)
+        # 推导见 5½.2 节: 扰动对 HOCBF 约束的最坏影响为
+        # Δ_HOCBF = (p₁+p₂)(-ε_v) + p₁p₂·ε_d
+        # 最坏情况 |ε_d|,|ε_v| ≤ δ_max → |Δ| ≤ δ_max·(p₁+p₂+p₁p₂)
+        
+        p1, p2 = p[:, 0], p[:, 1]
+        kappa = self.delta_max * (p1 + p2 + p1 * p2)  # [B], 动态鲁棒裕量
         
         G_hocbf = -LgLfb.view(nBatch, 1)  # [B, 1] = [-1]
         h_hocbf = (Lf2b 
-                   + (p[:, 0] + p[:, 1]) * b_dot 
-                   + p[:, 0] * p[:, 1] * b 
-                   - self.robust_margin).view(nBatch, 1)
+                   + (p1 + p2) * b_dot 
+                   + p1 * p2 * b 
+                   - kappa).view(nBatch, 1)
         
         # 控制约束: u_min ≤ u ≤ u_max
         # u ≤ u_max  →  [1]·u ≤ u_max
@@ -1185,7 +1772,7 @@ def main():
         noise_factor=0.05,
         device=device
     ).to(device)
-    print(f"BarrierNet-AEBS created. Robust margin: {barrier_net.robust_margin:.4f}")
+    print(f"BarrierNet-AEBS created. delta_max: {barrier_net.delta_max:.4f}")
     
     # ========== 4. 训练 ==========
     trainer = BarrierNetTrainer(
