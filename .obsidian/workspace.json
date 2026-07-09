@@ -11,32 +11,15 @@
             "id": "abfb80cd79c58ff2",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "image",
               "state": {
-                "file": "实验报告.md",
-                "mode": "source",
-                "source": false
+                "file": "实验结果/BarrierNetResults2/2d_robot/fig9_trajectories_different_R.png"
               },
-              "icon": "lucide-file",
-              "title": "实验报告"
-            }
-          },
-          {
-            "id": "b79a2bef575ff892",
-            "type": "leaf",
-            "state": {
-              "type": "markdown",
-              "state": {
-                "file": "实验报告.md",
-                "mode": "source",
-                "source": false
-              },
-              "icon": "lucide-file",
-              "title": "实验报告"
+              "icon": "lucide-image",
+              "title": "fig9_trajectories_different_R"
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "vertical"
@@ -198,34 +181,38 @@
       "bases:新建数据库": false
     }
   },
-  "active": "b79a2bef575ff892",
+  "active": "abfb80cd79c58ff2",
   "lastOpenFiles": [
-    "results/merging/table2_comparison_summary.png",
-    "results/merging/fig9_multi_model_safety_oc.png",
-    "results/merging/fig7_safety_comparison_oc.png",
-    "results/merging/fig6_control_penalty_oc_bn.png",
-    "results/merging/fig8_training_losses_oc.png",
-    "results/merging/fig4_training_losses_ocbf.png",
-    "results/merging/fig5_multi_model_safety_ocbf.png",
-    "results/merging/fig3_safety_comparison_ocbf.png",
-    "results/merging/fig2_control_ocbf_fc.png",
-    "results/merging/fig1_control_penalty_ocbf_bn.png",
-    "results/driving/fig9_multiple_trajectories.png",
-    "results/merging",
-    "results/driving",
-    "results/3d_robot",
-    "results/2d_robot",
-    "results/EXPERIMENTS.md",
-    "results",
+    "实验结果/BarrierNetResults2/2d_robot/fig10_training_losses.png",
+    "实验结果/BarrierNetResults2/2d_robot/fig11_comprehensive_panel.png",
+    "实验结果/BarrierNetResults2/2d_robot/fig1_control_u1_R6.png",
+    "实验结果/BarrierNetResults2/merging/fig5_multi_model_safety_ocbf.png",
+    "实验结果/BarrierNetResults2/merging/fig4_training_losses_ocbf.png",
+    "实验结果/BarrierNetResults2/merging/fig2_control_ocbf_fc.png",
+    "实验结果/BarrierNetResults2/merging/fig1_control_penalty_ocbf_bn.png",
+    "实验结果/BarrierNetResults2/merging/fig9_multi_model_safety_oc.png",
+    "实验结果/BarrierNetResults2/merging/fig7_safety_comparison_oc.png",
+    "实验结果/BarrierNetResults2/merging/fig8_training_losses_oc.png",
+    "实验结果/BarrierNetResults2/merging/fig6_control_penalty_oc_bn.png",
+    "实验结果/BarrierNetResult1/Merging/control_ocbf_bn.pdf",
+    "实验结果/BarrierNetResult1/Merging/control_ocbf_fc.pdf",
+    "实验结果/BarrierNetResult1/Merging",
+    "实验结果/BarrierNetResult1/3D/fc",
+    "实验结果/BarrierNetResult1/3D/bn",
+    "实验结果/BarrierNetResult1/3D",
+    "实验结果/BarrierNetResult1/新建文件夹",
+    "实验结果/BarrierNetResult1/2D_ROBOT/fc",
+    "实验结果/BarrierNetResult1/2D_ROBOT/bn",
+    "实验结果/BarrierNetResult1/2D_ROBOT",
+    "实验结果/BarrierNetResults2/EXPERIMENTS.md",
+    "实验结果/QP_Safety_Filter_文档.md",
+    "实验结果/experiment_results_report.md",
+    "实验结果/experiment_qp_comparison.md",
+    "实验结果/实验报告.md",
     "means.md",
-    "PROJECT_STRUCTURE.md",
-    "run_03.log",
-    "run_02.log",
-    "run_01.log",
-    "experiment_results_report.md",
-    "experiment_qp_comparison.md",
-    "QP_Safety_Filter_文档.md",
-    "实验报告.md",
+    "README.md",
+    "Provably Probabilistic Safe Controller Synthesis for Vision-Based Neural Network Control Systems.md",
+    "实验结果/PROJECT_STRUCTURE.md",
     "artical-F122/SafePVC_QP_Integration_Guide.md",
     "artical-F122/BarrierNet_QP_Limitations_Analysis.md"
   ]
