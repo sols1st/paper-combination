@@ -1,0 +1,232 @@
+{
+  "main": {
+    "id": "7ab20b855f11f4b3",
+    "type": "split",
+    "children": [
+      {
+        "id": "25073b7310493135",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "abfb80cd79c58ff2",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "实验报告.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "实验报告"
+            }
+          },
+          {
+            "id": "b79a2bef575ff892",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "实验报告.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "实验报告"
+            }
+          }
+        ],
+        "currentTab": 1
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "367fae2fa7ef3699",
+    "type": "split",
+    "children": [
+      {
+        "id": "132ef07dc169a350",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "634b1f2a56ed308e",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical",
+                "autoReveal": false
+              },
+              "icon": "lucide-folder-closed",
+              "title": "文件列表"
+            }
+          },
+          {
+            "id": "8fb8f98490a1fb0f",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              },
+              "icon": "lucide-search",
+              "title": "搜索"
+            }
+          },
+          {
+            "id": "a5fbb48c7e7f7fea",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {},
+              "icon": "lucide-bookmark",
+              "title": "书签"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "bb98502bc140aeae",
+    "type": "split",
+    "children": [
+      {
+        "id": "7ea362e07d7661f2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f2cb0055b74ac027",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "artical-F122/SafePVC_QP_Integration_Guide.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-coming-in",
+              "title": "SafePVC_QP_Integration_Guide 的反向链接列表"
+            }
+          },
+          {
+            "id": "984b0daa6adb5dc6",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "artical-F122/SafePVC_QP_Integration_Guide.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              },
+              "icon": "links-going-out",
+              "title": "SafePVC_QP_Integration_Guide 的出链列表"
+            }
+          },
+          {
+            "id": "1aa513727d59d0a6",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-tags",
+              "title": "标签"
+            }
+          },
+          {
+            "id": "80089a47edebee2f",
+            "type": "leaf",
+            "state": {
+              "type": "all-properties",
+              "state": {
+                "sortOrder": "frequency",
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-archive",
+              "title": "添加笔记属性"
+            }
+          },
+          {
+            "id": "26464f9765b37e06",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "artical-F122/SafePVC_QP_Integration_Guide.md",
+                "followCursor": false,
+                "showSearch": false,
+                "searchQuery": ""
+              },
+              "icon": "lucide-list",
+              "title": "SafePVC_QP_Integration_Guide 的大纲"
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:打开快速切换": false,
+      "graph:查看关系图谱": false,
+      "canvas:新建白板": false,
+      "daily-notes:打开/创建今天的日记": false,
+      "templates:插入模板": false,
+      "command-palette:打开命令面板": false,
+      "bases:新建数据库": false
+    }
+  },
+  "active": "b79a2bef575ff892",
+  "lastOpenFiles": [
+    "results/merging/table2_comparison_summary.png",
+    "results/merging/fig9_multi_model_safety_oc.png",
+    "results/merging/fig7_safety_comparison_oc.png",
+    "results/merging/fig6_control_penalty_oc_bn.png",
+    "results/merging/fig8_training_losses_oc.png",
+    "results/merging/fig4_training_losses_ocbf.png",
+    "results/merging/fig5_multi_model_safety_ocbf.png",
+    "results/merging/fig3_safety_comparison_ocbf.png",
+    "results/merging/fig2_control_ocbf_fc.png",
+    "results/merging/fig1_control_penalty_ocbf_bn.png",
+    "results/driving/fig9_multiple_trajectories.png",
+    "results/merging",
+    "results/driving",
+    "results/3d_robot",
+    "results/2d_robot",
+    "results/EXPERIMENTS.md",
+    "results",
+    "means.md",
+    "PROJECT_STRUCTURE.md",
+    "run_03.log",
+    "run_02.log",
+    "run_01.log",
+    "experiment_results_report.md",
+    "experiment_qp_comparison.md",
+    "QP_Safety_Filter_文档.md",
+    "实验报告.md",
+    "artical-F122/SafePVC_QP_Integration_Guide.md",
+    "artical-F122/BarrierNet_QP_Limitations_Analysis.md"
+  ]
+}
