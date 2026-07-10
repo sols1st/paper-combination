@@ -1,41 +1,56 @@
 {
   "main": {
-    "id": "7ab20b855f11f4b3",
+    "id": "9dad94b93cc6cabb",
     "type": "split",
     "children": [
       {
-        "id": "25073b7310493135",
+        "id": "82e1357a4c09cdd7",
         "type": "tabs",
         "children": [
           {
-            "id": "abfb80cd79c58ff2",
+            "id": "b7f8f9e017063aaf",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "实验结果/BarrierNetResults2/EXPERIMENTS_WITH_PICTURE.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "EXPERIMENTS_WITH_PICTURE"
+            }
+          },
+          {
+            "id": "51d27b65e2825efd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
                 "file": "实验结果/QP_SAFEPVC_COMPARISON_REPORT.md",
-                "mode": "source",
+                "mode": "preview",
                 "source": false
               },
               "icon": "lucide-file",
               "title": "QP_SAFEPVC_COMPARISON_REPORT"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
   },
   "left": {
-    "id": "367fae2fa7ef3699",
+    "id": "1f58ff3bc056dd82",
     "type": "split",
     "children": [
       {
-        "id": "132ef07dc169a350",
+        "id": "bb8d42800a0304eb",
         "type": "tabs",
         "children": [
           {
-            "id": "634b1f2a56ed308e",
+            "id": "0e4a52e8f256285d",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -48,7 +63,7 @@
             }
           },
           {
-            "id": "8fb8f98490a1fb0f",
+            "id": "0dbb814b96125bc6",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -65,7 +80,7 @@
             }
           },
           {
-            "id": "a5fbb48c7e7f7fea",
+            "id": "c5304a874f750069",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -78,18 +93,19 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
   "right": {
-    "id": "bb98502bc140aeae",
+    "id": "45976d23fcf79710",
     "type": "split",
     "children": [
       {
-        "id": "7ea362e07d7661f2",
+        "id": "744506200b8ad2f8",
         "type": "tabs",
         "children": [
           {
-            "id": "f2cb0055b74ac027",
+            "id": "a2a04999fa5f67ed",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -108,7 +124,7 @@
             }
           },
           {
-            "id": "984b0daa6adb5dc6",
+            "id": "f5bf7ad411fdf4a8",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -122,7 +138,7 @@
             }
           },
           {
-            "id": "1aa513727d59d0a6",
+            "id": "630e2650cd1410dd",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -137,7 +153,7 @@
             }
           },
           {
-            "id": "80089a47edebee2f",
+            "id": "3592f75d090f58b0",
             "type": "leaf",
             "state": {
               "type": "all-properties",
@@ -151,7 +167,7 @@
             }
           },
           {
-            "id": "26464f9765b37e06",
+            "id": "1e45273e73e58b59",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -180,48 +196,44 @@
       "daily-notes:打开/创建今天的日记": false,
       "templates:插入模板": false,
       "command-palette:打开命令面板": false,
-      "bases:新建数据库": false
+      "bases:创建新数据库": false
     }
   },
-  "active": "abfb80cd79c58ff2",
+  "active": "51d27b65e2825efd",
   "lastOpenFiles": [
-    "实验结果/QP_Safety_Filter_文档.md",
+    "实验结果/BarrierNetResults2/EXPERIMENTS_WITH_PICTURE.md",
     "实验结果/QP_SAFEPVC_COMPARISON_REPORT.md",
-    "实验结果/PROJECT_STRUCTURE.md",
-    "实验结果/experiment_qp_comparison.md",
-    "artical-F122/BarrierNet_QP_Limitations_Analysis.md",
-    "artical-F122/SafePVC_QP_Integration_Guide.md",
-    "BarrierNet/README.md",
-    "720_file_Paper.pdf",
-    "BarrierNet - 副本/Merging/data/data_train_oc.mat",
-    "BarrierNet - 副本/Merging/data/data_train_ocbf.mat",
-    "BarrierNet - 副本/Merging/data/data_test_ocbf.mat",
-    "BarrierNet - 副本/Merging/data/data_test_oc.mat",
-    "BarrierNet - 副本/Merging/data/data_ip.mat",
-    "BarrierNet - 副本/Merging/test_merging_barriernet.py",
-    "BarrierNet - 副本/Merging/my_classes.py",
-    "BarrierNet - 副本/Merging/model_ocbf_fc.pth",
-    "BarrierNet - 副本/Merging/model_ocbf_bn.pth",
-    "BarrierNet - 副本/imgs/BarrierNet_model.jpg",
-    "BarrierNet - 副本/README.md",
-    "BarrierNet_Synthesis_Plan.md",
-    "BarrierNet_SafePVC_Integration_Plan.md",
-    "Differentiable_Control_Barrier_Functions_for_Vision-based_End-to-End_Autonomous_Driving.md",
-    "Provably Probabilistic Safe Controller Synthesis for Vision-Based Neural Network Control Systems.md",
-    "means.md",
-    "实验结果/BarrierNetResults2/2d_robot/fig8_safety_different_R.png",
-    "实验结果/BarrierNetResults2/2d_robot/fig7_controls_different_R.png",
-    "实验结果/BarrierNetResults2/EXPERIMENTS.md",
-    "2025-2026_前沿论文推荐.md",
-    "实验结果/BarrierNetResults2/2d_robot/fig9_trajectories_different_R.png",
-    "实验结果/BarrierNetResults2/2d_robot/fig10_training_losses.png",
-    "实验结果/BarrierNetResults2/2d_robot/fig11_comprehensive_panel.png",
+    "实验结果/BarrierNetResults2/未命名.md",
+    "实验结果/BarrierNetResults2/2d_robot/fig2_control_u2_R6.png",
     "实验结果/BarrierNetResults2/2d_robot/fig1_control_u1_R6.png",
-    "实验结果/BarrierNetResults2/merging/fig5_multi_model_safety_ocbf.png",
-    "实验结果/BarrierNetResults2/merging/fig4_training_losses_ocbf.png",
-    "实验结果/BarrierNetResults2/merging/fig2_control_ocbf_fc.png",
-    "实验结果/experiment_results_report.md",
+    "实验结果/QP_Safety_Filter_文档.md",
+    "实验结果/experiment_qp_comparison.md",
     "实验结果/实验报告.md",
-    "README.md"
+    "实验结果/experiment_results_report.md",
+    "实验结果/BarrierNetResults2/merging/fig2_control_ocbf_fc.png",
+    "实验结果/BarrierNetResults2/merging/fig1_control_penalty_ocbf_bn.png",
+    "实验结果/BarrierNetResults2/3d_robot/fig11_comprehensive_panel.png",
+    "实验结果/BarrierNetResults2/driving/fig7_speed_steering.png",
+    "实验结果/BarrierNetResults2/3d_robot/fig6_3d_trajectory_fc.png",
+    "实验结果/BarrierNetResults2/3d_robot/fig5_3d_trajectory_bn.png",
+    "实验结果/BarrierNetResults2/3d_robot/fig3_control_u3.png",
+    "实验结果/BarrierNetResults2/2d_robot/fig5_safety_hocbf_R6.png",
+    "实验结果/BarrierNetResults2/EXPERIMENTS.md",
+    "artical-F122/SafePVC_QP_Integration_Guide.md",
+    "实验结果/BarrierNetResult1/Merging/control_ocbf_fc.pdf",
+    "实验结果/BarrierNetResult1/Merging/control_ocbf_bn.pdf",
+    "实验结果/BarrierNetResult1/3D/fc",
+    "实验结果/BarrierNetResult1/3D/bn",
+    "实验结果/BarrierNetResult1/2D_ROBOT/fc",
+    "实验结果/BarrierNetResult1/2D_ROBOT/bn",
+    "实验结果/BarrierNetResults2/merging",
+    "实验结果/BarrierNetResults2/driving",
+    "实验结果/BarrierNetResults2/3d_robot",
+    "实验结果/BarrierNetResults2/2d_robot",
+    "实验结果/PROJECT_STRUCTURE.md",
+    "means.md",
+    "artical-F122/BarrierNet_QP_Limitations_Analysis.md",
+    "BarrierNet_Synthesis_Plan.md",
+    "2025-2026_前沿论文推荐.md"
   ]
 }

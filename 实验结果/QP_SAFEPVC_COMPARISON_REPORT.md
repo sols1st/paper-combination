@@ -91,24 +91,24 @@ QP Shield: Stopping Distance CBF
 
 #### 基线 SafePVC (无 QP, 16 次运行)
 
-| Run |   最佳安全概率   | 最终 violations | 状态  |
-| :-: | :--------: | :-----------: | :-: |
-|  1  | **95.69%** |    2/10000    |  ✅  |
-|  2  |   86.65%   |    4/10000    |  ✅  |
-|  3  |   80.76%   |    5/10000    |  ✅  |
-|  4  |   93.27%   |    7/10000    |  ✅  |
-|  5  | **95.42%** |    7/10000    |  ✅  |
-|  6  |   74.83%   |   10/10000    |  ✅  |
-|  7  |   91.59%   |    3/10000    |  ✅  |
-|  8  |   93.96%   |    1/10000    |  ✅  |
-|  9  |   73.28%   |    2/10000    |  ✅  |
-| 10  |   93.80%   |    6/10000    |  ✅  |
-| 11  |   93.27%   |    6/10000    |  ✅  |
-| 12  | **93.97%** |    7/10000    |  ✅  |
-| 13  |   82.67%   |   10/10000    |  ✅  |
-| 14  |   88.46%   |    9/10000    |  ✅  |
-| 15  |   94.52%   |    6/10000    |  ✅  |
-| 16  |   59.38%   |    2/10000    | ⚠️  |
+| Run | 最佳安全概率 | 最终 violations | 状态 |
+|:---:|:----------:|:---------------:|:----:|
+| 1 | **95.69%** | 2/10000 | ✅ |
+| 2 | 86.65% | 4/10000 | ✅ |
+| 3 | 80.76% | 5/10000 | ✅ |
+| 4 | 93.27% | 7/10000 | ✅ |
+| 5 | **95.42%** | 7/10000 | ✅ |
+| 6 | 74.83% | 10/10000 | ✅ |
+| 7 | 91.59% | 3/10000 | ✅ |
+| 8 | 93.96% | 1/10000 | ✅ |
+| 9 | 73.28% | 2/10000 | ✅ |
+| 10 | 93.80% | 6/10000 | ✅ |
+| 11 | 93.27% | 6/10000 | ✅ |
+| 12 | **93.97%** | 7/10000 | ✅ |
+| 13 | 82.67% | 10/10000 | ✅ |
+| 14 | 88.46% | 9/10000 | ✅ |
+| 15 | 94.52% | 6/10000 | ✅ |
+| 16 | 59.38% | 2/10000 | ⚠️ |
 
 #### QP 增强 SafePVC (18 次运行)
 
@@ -135,16 +135,16 @@ QP Shield: Stopping Distance CBF
 
 ### 3.2 统计对比
 
-| 指标         | 基线 (16 runs) | QP (18 runs)  | 差异           |
-| ---------- | ------------ | ------------- | ------------ |
-| **最佳值**    | **95.69%**   | **95.33%**    | −0.36%       |
-| 均值 (全局)    | 86.97%       | 86.91%        | −0.06%       |
-| 均值 (剔除异常值) | 88.32%       | 90.04%        | +1.72%       |
-| **中位数**    | **93.27%**   | **92.62%**    | −0.65%       |
-| **最小值**    | 59.38%       | 15.50%        | —            |
-| 标准差 (全局)   | 10.23%       | 16.60%        | —            |
-| 标准差 (剔除异常) | 7.14%        | 4.89%         | **−31.5%** ✅ |
-| 成功率 (≥70%) | 16/16 (100%) | 17/18 (94.4%) | —            |
+| 指标 | 基线 (16 runs) | QP (18 runs) | 差异 |
+|---|---|---|---|
+| **最佳值** | **95.69%** | **95.33%** | −0.36% |
+| 均值 (全局) | 86.97% | 86.91% | −0.06% |
+| 均值 (剔除异常值) | 88.32% | 90.04% | +1.72% |
+| **中位数** | **93.27%** | **92.62%** | −0.65% |
+| **最小值** | 59.38% | 15.50% | — |
+| 标准差 (全局) | 10.23% | 16.60% | — |
+| 标准差 (剔除异常) | 7.14% | 4.89% | **−31.5%** ✅ |
+| 成功率 (≥70%) | 16/16 (100%) | 17/18 (94.4%) | — |
 
 ### 3.3 分布对比
 
@@ -561,3 +561,405 @@ QP 在以下情况介入：
 2. **标准差降低 31.5%** = QP 让每次训练得到的控制器质量更稳定。基线版本有约 1/3 的概率得到一个"比较差"的控制器（<80%），QP 把这种风险降到了接近 0。
 
 3. **QP 的价值在于"底线"** = QP 没有让最好的情况变得更好（上限相同），但让最差的情况不再出现（下限从 59% 提升到 84%）。在安全关键系统中，这是最重要的改进方向。
+
+---
+
+## 附录：QP 嵌入实现详解
+
+> 本节详细记录：QP 是怎么加到 SafePVC 项目里的——创建了哪些文件、修改了哪些文件、每个地方改了什么。
+
+---
+
+### A.1 先看整体：QP 插在网络的什么位置？
+
+一句话：**QP 插在神经网络输出（`u_nn`）和环境执行之间。** 网络的内部结构、层数、权重，一概不动。
+
+```
+                        P-Net (神经网络，结构和权重完全不变)
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│   z (隐变量)  ──→  gen_net (cGAN, 冻结)  ──→  图像 (1024维)    │
+│                                                     ↓           │
+│                                            state_net (冻结)     │
+│                                                     ↓           │
+│                                               d_est (估计距离)   │
+│   s = [d_norm, v]  ──→  速度 v 单独保留  ──→  拼接 [d_est, v]  │
+│                                                     ↓           │
+│                                            controller_net (PPO) │
+│                                              唯一可训练的部分    │
+│                                                     ↓           │
+│                                                  u_nn           │
+│                                             (网络输出的加速度)   │
+└─────────────────────────────────────────────────────────────────┘
+                        ↓
+        ╔═══════════════════════════════════════╗
+        ║     ← ← ←  QP 就插在这里！ ← ← ←     ║
+        ║                                       ║
+        ║  QP 不是神经网络，是一个数学公式：      ║
+        ║  h(s) = (d-d_unsafe) - v²/(2·a_max)  ║
+        ║  u_safe = max(u_nn, u_cbf)            ║
+        ╚═══════════════════════════════════════╝
+                        ↓
+                    u_safe (修正后的安全动作)
+                        ↓
+                ┌───────────────┐
+                │  环境动力学     │
+                │ d' = d - v·dt │
+                │ v' = v + u·dt │
+                └───────────────┘
+                        ↓
+                   s' (下一状态)
+```
+
+---
+
+### A.2 文件变更总览
+
+QP 集成一共涉及 **3 个新文件 + 1 个修改文件**：
+
+| 文件 | 状态 | 作用 |
+|---|---|---|
+| `Aebs/VT/qp_shield_net.py` | **新建** (172 行) | QP 包装网络 — 核心！把 P-Net 包进 QP |
+| `Aebs/VT/loop_qp.py` | **新建** (162 行) | QP 版 CEGIS 启动入口 |
+| `Aebs/QP/qp_safety_filter.py` | **新建** (433 行) | 独立 QP 求解器（可脱离 CEGIS 单独使用） |
+| `Aebs/VT/train.py` | **修改** (+3 处) | VTLearner 中加了 QP 初始化和训练注入 |
+
+另外还有辅助文件（可视化、仿真、文档）：
+| 文件 | 状态 | 作用 |
+|---|---|---|
+| `Aebs/QP/__init__.py` | 新建 | Python 包声明 |
+| `Aebs/QP/simulate_with_qp.py` | 新建 (566 行) | 轨迹级 QP 仿真对比 |
+| `Aebs/QP/visualize_qp.py` | 新建 (412 行) | CBF 等高线、干预热力图等可视化 |
+
+**没有修改的文件**：`Aebs/VT/loop.py`、`Aebs/VT/verify.py`、`Aebs/VT/utils.py`、`Aebs/system/env.py`、`Combined_network/model.py` — 这些全部保持原样。
+
+---
+
+### A.3 逐个文件详解
+
+#### A.3.1 新建文件 ①：`Aebs/VT/qp_shield_net.py` — 核心包装器
+
+**这是整个 QP 集成最关键的一个文件。** 它定义了一个 `nn.Module` 子类 `QPShieldNet`，把原始 P-Net 包在里面。
+
+**做了什么？**
+
+```
+QPShieldNet 的 forward() 流程:
+
+  def forward(self, z, s):
+      u_nn = self.p_net(z, s)           # 第1步：正常调用原始网络
+      u_safe = self._apply_qp(u_nn, s)  # 第2步：用 QP 公式检查并修正
+      return u_safe                      # 第3步：返回安全动作
+```
+
+**_apply_qp 内部的数学逻辑：**
+
+```
+输入: u_nn (网络算的加速度), s = [d_norm, v] (状态)
+
+CBF 公式:
+  h(s) = (d_real - d_unsafe_real) - v² / (2 × a_max)
+  ↑ "在当前速度下，停车需要的距离 vs 实际可用距离"
+
+如果 h 足够大 (安全):
+  u_safe = u_nn          → 不动网络输出
+
+如果 h 太小 (危险):
+  u_safe = max(u_nn, c/H) → 强制加大刹车
+  ↑ 数学推导见 A.5 节，本质是: QP min‖u-u_nn‖² s.t. CBF≥0 的解析解
+```
+
+**为什么要提供三个代理属性？**
+
+```python
+@property
+def controller_net(self):   # → p_net.controller_net
+@property
+def gen_net(self):           # → p_net.gen_net
+@property
+def state_net(self):         # → p_net.state_net
+```
+
+因为 `VTLearner`（在 `train.py` 里）需要通过 `self.p_net.controller_net.parameters()` 拿到可训练参数、通过 `self.p_net.gen_net` 做 Lipschitz 正则化。加了 `QPShieldNet` 包装后，`self.p_net` 不再直接是 `AebsEnd2EndNet`，而是 `QPShieldNet`。这三个 `@property` 让外部的 `VTLearner` **根本不需要知道自己拿到的到底是原始 P-Net 还是包了 QP 的版本**。
+
+**还提供了一个额外方法 `filter_actions`：**
+
+```python
+def filter_actions(self, u_raw, s):
+    return self._apply_qp(u_raw, s)   # 对任意动作做 QP 过滤
+```
+
+这个方法用在训练时过滤 teacher 网络的目标动作（详见 A.3.3 注入点②）。
+
+---
+
+#### A.3.2 新建文件 ②：`Aebs/VT/loop_qp.py` — QP 版启动入口
+
+**这个文件就是 `loop.py` 的 QP 版本。** 和 `loop.py` 的区别只有两个地方：
+
+**区别 1 — 多了 QP 配置：**
+```python
+# loop_qp.py 比 loop.py 多了这几行:
+qp_config = {
+    "alpha": 0.5,       # CBF 松弛参数
+    "a_max": 3.0,       # 最大减速度
+}
+```
+
+**区别 2 — 初始化 VTLearner 时传入 qp_config：**
+```python
+# loop.py (基线):
+vt_learner = VTLearner(..., qp_config=None)    # 不传 → 无 QP
+
+# loop_qp.py (QP版):
+vt_learner = VTLearner(..., qp_config=qp_config)  # 传入 → 启用 QP
+```
+
+**就这两个区别。** CEGIS 循环本身（`Loop` 类）、验证器（`VTVerifier`）、日志记录——都是从 `loop.py` 直接 import 复用的，一行没改。
+
+---
+
+#### A.3.3 修改文件：`Aebs/VT/train.py` — 3 处修改
+
+**这是唯一被修改的已有文件。** 共改了 3 个地方：
+
+---
+
+**修改 ① — 文件顶部，新增 import：**
+
+```python
+# 在 train.py 第 12 行，新增:
+from Aebs.VT.qp_shield_net import QPShieldNet
+```
+
+---
+
+**修改 ② — `VTLearner.__init__`，新增 QP 初始化逻辑：**
+
+位置：`__init__` 方法的末尾，`self.p_net = p_net` 之前。
+
+```python
+# 原始代码:
+p_net = AebsEnd2EndNet(gen_net, state_layer_sizes, mlp_extractor, action_net)
+...
+self.p_net = p_net
+
+# 新增的 QP 包装逻辑:
+if qp_config is not None:
+    p_net = QPShieldNet(
+        p_net, env,
+        alpha=qp_config.get("alpha", 0.5),
+        a_max=qp_config.get("a_max", 3.0),
+    )
+self.p_net = p_net
+```
+
+**效果**：如果传入 `qp_config`，`self.p_net` 就是 `QPShieldNet`；否则是原始 `AebsEnd2EndNet`。之后所有代码都通过 `self.p_net(z, s)` 调用，不需要区分。
+
+**同时，`__init__` 的参数签名也多了一个：**
+```python
+def __init__(self, ..., qp_config=None):  # 末尾多了这个参数
+```
+
+---
+
+**修改 ③ — `train_step_p` 方法，Teacher MSE 目标经过 QP 过滤：**
+
+位置：`train_step_p` 方法中，计算 MSE loss 的地方。
+
+```python
+# 原始代码:
+with torch.no_grad():
+    acc_labels = self.net(z, y_pert)      # teacher 网络输出
+mse_loss_p = F.mse_loss(a_p, acc_labels.view_as(a_p))
+
+# 修改后 (新增中间两行):
+with torch.no_grad():
+    acc_labels = self.net(z, y_pert)
+    if isinstance(self.p_net, QPShieldNet):                   # ← 新增
+        acc_labels = self.p_net.filter_actions(acc_labels, y_pert)  # ← 新增
+mse_loss_p = F.mse_loss(a_p, acc_labels.view_as(a_p))
+```
+
+**为什么这一行很重要？**
+
+```
+想象这个场景:
+  Teacher 输出 u = -0.5    (轻刹车，不够安全)
+  P-Net 输出 u = -2.0      (重刹车，经过 QP 修正)
+  MSE loss 看到 -2.0 vs -0.5，差距很大 → 梯度让 P-Net 往 -0.5 靠近
+
+结果: 训练反向把 QP 的安全修正"学没了"！ 😱
+```
+
+加了 `filter_actions` 之后：
+```
+  Teacher 输出 u = -0.5 → QP 修正 → u = -2.0
+  P-Net 输出 u = -2.0  (也经过 QP)
+  MSE loss 看到 -2.0 vs -2.0 → loss ≈ 0 → 不往不安全方向拉
+
+结果: QP 的安全修正和训练目标一致 ✅
+```
+
+同样的 3 行代码也加在了 `train_step_joint` 方法中（第 411-412 行）。
+
+---
+
+#### A.3.4 新建文件 ③：`Aebs/QP/qp_safety_filter.py` — 独立 QP 求解器
+
+这是一个**可以脱离 CEGIS 循环单独使用**的 QP 滤波器。提供三种 CBF 模式：
+
+| 模式 | CBF 公式 | 说明 |
+|---|---|---|
+| `stopping_distance` | `h = (d-d_unsafe) - v²/(2·a_max)` | **实验采用**，考虑刹车距离 |
+| `geometric` | `h = d - d_unsafe` | 只看距离，不看速度 |
+| `learned` | `h = B_threshold - B(s)` | 用训练好的障碍证书 |
+
+它和 `QPShieldNet` 的关系是：`QPShieldNet._apply_qp` 的逻辑等价于 `CBFQPSafetyFilter.solve_qp`，但 `QPShieldNet` 是专为嵌入 CEIS 循环设计的轻量版（纯 tensor 运算、无类开销），而 `CBFQPSafetyFilter` 功能更全（支持 numpy 输入、统计追踪、三种模式切换）。
+
+---
+
+### A.4 训练循环中的数据流（修改前后对比）
+
+#### 修改前（基线 SafePVC）：
+
+```
+每次 CEGIS 迭代:
+
+  ① train L-Net (10 epochs):
+       s → P-Net → u_nn → 环境 → s' → B(s') → 计算鞅 loss → 更新 L-Net
+                                   ↑
+                            u_nn 直接喂给环境
+
+  ② verify:
+       网格上每个状态: s → P-Net → u_nn → IBP 传播 → 检查 E[B(s')] < B(s)
+                                   ↑
+                            u_nn 直接参与 IBP 计算
+
+  ③ train P-Net (1 epoch):
+       Teacher 目标: 旧 P-Net → u_teacher → 直接作为 MSE 目标
+       学生:         P-Net   → u_nn      → 与 teacher 比较
+```
+
+#### 修改后（QP 增强 SafePVC）：
+
+```
+每次 CEGIS 迭代:
+
+  ① train L-Net (10 epochs):
+       s → P-Net → u_nn → [QP] → u_safe → 环境 → s' → B(s') → 鞅 loss
+                           ↑                        ↑
+                    这里拦截修正!              B(s') 更小 → 鞅条件更容易过
+
+  ② verify:
+       网格: s → P-Net → u_nn → [QP] → u_safe → IBP 传播 → E[B(s')] < B(s)
+                           ↑
+                    验证也走 QP → violations 更少
+
+  ③ train P-Net (1 epoch):
+       Teacher: 旧 P-Net → u_teacher → [QP] → u_teacher_safe → MSE 目标
+       P-Net:   P-Net   → u_nn      → [QP] → u_safe         → 与目标比较
+                           ↑                        ↑
+                    两边都过 QP → 优化方向一致 → 不会白学
+```
+
+---
+
+### A.5 QP 公式的完整推导（stopping_distance CBF）
+
+QP 求解的问题是：
+
+```
+min_u  ½‖u - u_nn‖²              ← 尽量接近网络输出
+s.t.   h(f(s,u)) ≥ (1-α)·h(s)   ← CBF 安全约束
+       u_min ≤ u ≤ u_max          ← 物理限制
+```
+
+**第 1 步 — 定义 CBF：**
+
+```
+d_real = d_norm × std1           (归一化距离 → 真实距离)
+h(s) = (d_real - d_unsafe_real) - v²/(2·a_max)
+```
+
+`h(s) ≥ 0` 意味着"以当前速度 v，车辆能在到达不安全区域前刹停"。
+
+**第 2 步 — 线性化约束：**
+
+动力学：`d' = d - v·dt`, `v' = v + u·dt`
+
+```
+h(f(s,u)) = (d - v·dt - d_unsafe) - (v + u·dt)²/(2·a_max)
+
+展开 (v + u·dt)² = v² + 2v·u·dt + u²·dt²
+忽略 u²·dt² 项（极小）:
+h(f(s,u)) ≈ (d - v·dt - d_unsafe) - v²/(2·a_max) - (v·u·dt)/a_max
+          = h_frozen - H·u
+其中: h_frozen = h(f(s,0)) = (d - v·dt - d_unsafe) - v²/(2·a_max)
+      H = v·dt/a_max ≥ 0
+```
+
+**第 3 步 — 约束化简：**
+
+```
+h_frozen - H·u ≥ (1-α)·h(s)
+→ H·u ≤ h_frozen - (1-α)·h(s)
+→ u ≥ [h_frozen - (1-α)·h(s)] / H    (因为 H ≥ 0)
+→ u ≥ u_cbf
+```
+
+**第 4 步 — 解析解：**
+
+QP 变成：`min (u - u_nn)²  s.t.  u ≥ u_cbf, u_min ≤ u ≤ u_max`
+
+```
+解: u_safe = clamp(u_nn, max(u_min, u_cbf), u_max)
+         ≈ max(u_nn, u_cbf)      (当 u_nn 一般在范围内时)
+```
+
+**物理直觉**：如果网络输出的刹车力度不够 → QP 把它提高到安全所需的最小值；如果网络已经刹车够重 → QP 不干预。
+
+---
+
+### A.6 一句话总结所有修改
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│                                                                 │
+│  新建 3 个文件:                                                  │
+│    qp_shield_net.py  ← QP 包装器 (nn.Module), 172 行             │
+│    loop_qp.py        ← QP 版入口, 比 loop.py 多 2 行关键代码      │
+│    qp_safety_filter.py ← 独立 QP 求解器, 433 行                   │
+│                                                                 │
+│  修改 1 个文件:                                                  │
+│    train.py  ← 加了 3 处:                                       │
+│      ① import QPShieldNet                                       │
+│      ② __init__ 里 if qp_config: 包一层                          │
+│      ③ train_step_p/joint 里 teacher 目标也过 QP                │
+│                                                                 │
+│  没改的文件: loop.py, verify.py, utils.py, env.py, model.py     │
+│                                                                 │
+│  核心思想: 网络完全不动，只在网络输出和环境之间拦一道数学公式      │
+│                                                                 │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+| 问题 | 答案 |
+|---|---|
+| QP 在网络里面还是外面？ | **外面**。网络算完 → QP 检查 → 环境执行 |
+| QP 改了哪个网络层？ | **一层没改**。gen_net、state_net、controller_net 原封不动 |
+| QP 参与梯度反向传播吗？ | **不参与**。它是纯数学公式，没有可训练参数 |
+| 训练时会经过 QP 吗？ | **会**。前向传播和 teacher 目标都走 QP |
+| 不用 QP 时有什么开销？ | **零开销**。`qp_config=None` 时行为完全不变 |
+
+### A.7 相关文件索引
+
+| 文件 | 作用 |
+|---|---|
+| `Aebs/VT/qp_shield_net.py` | **核心**：QPShieldNet 包装器，包在 P-Net 外面 |
+| `Aebs/VT/train.py` | **被修改**：VTLearner，初始化 + 训练注入点 |
+| `Aebs/VT/loop_qp.py` | QP 版启动入口：`python -m Aebs.VT.loop_qp` |
+| `Aebs/VT/loop.py` | 基线启动入口：`python -m Aebs.VT.loop` |
+| `Aebs/QP/qp_safety_filter.py` | 独立 QP 求解器，可脱离 CEGIS 用 |
+| `Aebs/QP/simulate_with_qp.py` | 轨迹级 QP vs 基线对比仿真 |
+| `Aebs/QP/visualize_qp.py` | CBF 等高线、干预热力图等可视化 |
