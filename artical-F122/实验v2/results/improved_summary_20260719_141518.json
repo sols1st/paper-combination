@@ -1,0 +1,27 @@
+{
+  "baseline_run1": {
+    "max_prob": 95.93632106303605,
+    "runtime": 215.8830542564392,
+    "iters": 40
+  },
+  "baseline_run2": {
+    "max_prob": 95.26631001655277,
+    "runtime": 231.0313115119934,
+    "iters": 40
+  },
+  "qp_decoupled_lambda0.001": {
+    "max_prob": 87.55063272701886,
+    "runtime": 280.0743999481201,
+    "iters": 40
+  },
+  "qp_decoupled_lambda0.0": {
+    "max_prob": 0.0,
+    "runtime": 0,
+    "iters": 0
+  },
+  "qp_decoupled_lambda0.01_tgap2.0": {
+    "max_prob": 86.92118363176203,
+    "runtime": 263.5123116970062,
+    "iters": 40
+  }
+}

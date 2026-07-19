@@ -1,0 +1,130 @@
+# Experiment v2 Configuration
+# SafePVC + BarrierNet QP Integration
+
+# ============================================
+# Environment Settings (CARLA AEBS)
+# ============================================
+environment:
+  state_space:
+    d_min: 5.0      # Minimum distance (m)
+    d_max: 16.0     # Maximum distance (m)
+    v_min: 0.0      # Minimum velocity (m/s)
+    v_max: 3.0      # Maximum velocity (m/s)
+  control_space:
+    a_min: -3.0     # Maximum deceleration (m/s²)
+    a_max: 3.0      # Maximum acceleration (m/s²)
+  dt: 0.05          # Time step (s)
+  init_set:
+    d: [15.0, 16.0]
+    v: [2.5, 3.0]
+  unsafe_set:
+    d: [5.0, 6.0]
+    v: [0.5, 3.0]
+
+# ============================================
+# CBF Settings (for QP Controller)
+# ============================================
+cbf:
+  t_gap: 1.5        # Safe time headway (seconds)
+  p_range: [0.0, 4.0]  # CBF parameter range (via 4*sigmoid)
+  dt: 0.05          # Discretization timestep
+
+# ============================================
+# Controller Architecture
+# ============================================
+controller:
+  type: "qp"                   # "qp" or "direct" (baseline)
+  input_dim: 2                 # [state_est, velocity]
+  hidden_dims: [256, 256, 256] # Shared backbone
+  control_dim: 1               # Scalar acceleration
+  cbf_param_dim: 1             # Single CBF parameter (1st-order CBF)
+
+# ============================================
+# SBC (Stochastic Barrier Certificate)
+# ============================================
+sbc:
+  architecture: [2, 16, 8, 1]  # MLP layers
+  activation: "tanh"
+  square_output: true          # softplus for non-negativity
+  lip_target: 4.0              # Lipschitz constant target
+  martingale_eps: 0.1          # Decrease margin
+  gamma_decrease: 1.0          # Discount factor (1.0 = no discount)
+
+# ============================================
+# Training
+# ============================================
+training:
+  # Optimizers
+  sbc_lr: 0.003               # SBC learning rate
+  controller_lr: 0.005         # Controller learning rate (lower for QP stability)
+  # SBC training
+  sbc_epochs_per_iter: 10
+  sbc_batch_size: 256
+  # Controller training
+  controller_epochs_per_iter: 1
+  controller_batch_size: 256
+  # Loss weights
+  lambda_cbf: 1.0             # CBF constraint violation weight
+  lambda_mse: 10.0            # MSE distillation weight
+  lambda_lip: 0.001           # Lipschitz regularization weight
+  # Gradient
+  clip_grad: 1.0              # Gradient clipping
+
+# ============================================
+# Verification
+# ============================================
+verification:
+  grid_size: [100, 100]       # State space discretization
+  pmass_grid: [10, 10]        # Noise probability mass grid
+  batch_size: 2048            # Verification batch size
+  k_except_l: 1.2             # Lipschitz multiplier for K
+  fail_check_fast: true       # Early exit on violation
+  violation_threshold: 0.001  # 0.1% of grid cells
+  reach_prob_target: 0.90     # Target probability
+  noise_factor: 0.05          # State perturbation factor
+
+# ============================================
+# Main Loop
+# ============================================
+loop:
+  max_iterations: 100
+  timeout_seconds: 3600       # 1 hour
+
+# ============================================
+# Experiment Matrix
+# ============================================
+experiments:
+  # Baseline (no QP)
+  - name: baseline_nf001
+    controller_type: direct
+    noise_factor: 0.01
+  - name: baseline_nf005
+    controller_type: direct
+    noise_factor: 0.05
+  - name: baseline_nf010
+    controller_type: direct
+    noise_factor: 0.10
+
+  # QP Integrated
+  - name: qp_nf001_cbf1.0
+    controller_type: qp
+    noise_factor: 0.01
+    lambda_cbf: 1.0
+  - name: qp_nf005_cbf1.0
+    controller_type: qp
+    noise_factor: 0.05
+    lambda_cbf: 1.0
+  - name: qp_nf010_cbf1.0
+    controller_type: qp
+    noise_factor: 0.10
+    lambda_cbf: 1.0
+
+  # Ablation: CBF loss weight
+  - name: qp_nf005_cbf0.1
+    controller_type: qp
+    noise_factor: 0.05
+    lambda_cbf: 0.1
+  - name: qp_nf005_cbf10.0
+    controller_type: qp
+    noise_factor: 0.05
+    lambda_cbf: 10.0
