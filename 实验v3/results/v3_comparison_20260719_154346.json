@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-07-19T15:43:46.114417",
+  "metrics": [
+    {
+      "name": "B_Baseline",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 0.0,
+      "std_p": 0.0,
+      "avg_B": 0.0,
+      "avg_cbf_margin": 5.349843950075702
+    },
+    {
+      "name": "V2_TrainingQP",
+      "num_trajectories": 99,
+      "total_steps": 5495,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 0.5328753162315465,
+      "avg_barrier": 6.042706760503053,
+      "avg_control_change": 0.0005905042306483454,
+      "intervention_rate": 0.9974522292993631,
+      "avg_p": 2.0997575828441173,
+      "std_p": 0.030351191081813493,
+      "avg_B": 0.0,
+      "avg_cbf_margin": 10.911097403170306
+    },
+    {
+      "name": "V3A_InferenceQP_FixedP",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 0.6483057752166497,
+      "avg_cbf_margin": 10.456807693850303
+    },
+    {
+      "name": "V3B_InferenceQP_SBCModulated",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 0.10064740695708634,
+      "std_p": 5.831235169574121e-06,
+      "avg_B": 0.6483057752166497,
+      "avg_cbf_margin": 0.2955718592879722
+    }
+  ]
+}

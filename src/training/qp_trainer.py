@@ -32,8 +32,8 @@ sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', 'ar
 
 from Aebs.VT.utils import triangular, martingale_loss, MLP
 from Aebs.VT.train import VTLearner
-from models.qp_controller import QPAebsController, DirectController
-from models.cbf_constraints import AEBSCBFConstraints
+from src.models.qp_controller import QPAebsController, DirectController
+from src.models.cbf_constraints import AEBSCBFConstraints
 
 
 class QPVTLearner(VTLearner):

@@ -34,7 +34,7 @@ from torch.autograd import Variable
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', 'artical-F122'))
 
-from models.cbf_constraints import AEBSCBFConstraints
+from src.models.cbf_constraints import AEBSCBFConstraints
 
 
 class QPAebsController(nn.Module):

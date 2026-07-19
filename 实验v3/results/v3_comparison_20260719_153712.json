@@ -1,0 +1,61 @@
+{
+  "timestamp": "2026-07-19T15:37:12.277403",
+  "metrics": [
+    {
+      "name": "B_Baseline",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 0.0,
+      "std_p": 0.0,
+      "avg_B": 0.0,
+      "avg_cbf_margin": 5.349843950075702
+    },
+    {
+      "name": "V2_TrainingQP",
+      "num_trajectories": 99,
+      "total_steps": 5479,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 0.5448380140231199,
+      "avg_barrier": 6.006321156223529,
+      "avg_control_change": 0.0003451753033802855,
+      "intervention_rate": 0.9972622741376164,
+      "avg_p": 1.8736808725159673,
+      "std_p": 0.016277113836162066,
+      "avg_B": 0.0,
+      "avg_cbf_margin": 9.369826076353394
+    },
+    {
+      "name": "V3A_InferenceQP_FixedP",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 0.5426756585949867,
+      "avg_cbf_margin": 10.456807693850303
+    },
+    {
+      "name": "V3B_InferenceQP_SBCModulated",
+      "num_trajectories": 99,
+      "total_steps": 16454,
+      "safety_violation_rate": 0.0,
+      "min_barrier": 1.0965964574965144,
+      "avg_barrier": 5.349843951351638,
+      "avg_control_change": 0.01921096703226105,
+      "intervention_rate": 0.0,
+      "avg_p": 0.10000000149011612,
+      "std_p": 0.0,
+      "avg_B": 0.5426756585949867,
+      "avg_cbf_margin": 0.2921041985741649
+    }
+  ]
+}
