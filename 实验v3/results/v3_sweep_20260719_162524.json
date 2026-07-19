@@ -1,0 +1,3664 @@
+{
+  "timestamp": "20260719_162524",
+  "num_configs": 18,
+  "runs_per_config": 2,
+  "scenarios_per_run": 98,
+  "aggregated": [
+    {
+      "config": "Baseline_NoQP",
+      "intervention_mean": 0.0,
+      "intervention_std": 0.0,
+      "safe_mean": 100.0,
+      "p_mean": 0.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "Baseline_NoQP_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "std_p": 0.0,
+          "avg_B": 0.0,
+          "avg_margin": 0.0,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "Baseline_NoQP_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "std_p": 0.0,
+          "avg_B": 0.0,
+          "avg_margin": 0.0,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 2.709563684184104
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_0.5_tgap_1.5",
+      "intervention_mean": 55.10204081632652,
+      "intervention_std": 5.1020408163265305,
+      "safe_mean": 100.0,
+      "p_mean": 0.5,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_0.5_tgap_1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.6020408163265306,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 2.0992342975674845,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.52,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 1.9132462525367737
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 2.2601091666147113
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 2.34563690982759
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_0.5_tgap_1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.5,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 1.966489395924977,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.36,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 1.79414116948843
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 2.0112015772610903
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_1.0_tgap_1.5",
+      "intervention_mean": 46.42857142857143,
+      "intervention_std": 3.5714285714285725,
+      "safe_mean": 100.0,
+      "p_mean": 1.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_1.0_tgap_1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.5,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 4.681044790209556,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.9375,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 2.628002315759659
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_1.0_tgap_1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.42857142857142855,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 4.507019281387329,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 2.6759702311828732
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_2.0_tgap_1.0",
+      "intervention_mean": 45.91836734693877,
+      "intervention_std": 2.040816326530612,
+      "safe_mean": 100.0,
+      "p_mean": 2.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_2.0_tgap_1.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.47959183673469385,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 11.671067296242228,
+          "avg_barrier": 6.424214107649667,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_2.0_tgap_1.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4387755102040816,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 11.665276610121435,
+          "avg_barrier": 6.499441866972009,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.731608971953392
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_2.0_tgap_1.5",
+      "intervention_mean": 45.40816326530612,
+      "intervention_std": 2.5510204081632653,
+      "safe_mean": 100.0,
+      "p_mean": 2.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_2.0_tgap_1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.47959183673469385,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 10.045107812297587,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_2.0_tgap_1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.42857142857142855,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 9.991062400292376,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.7266072630882263
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_2.0_tgap_2.0",
+      "intervention_mean": 45.91836734693877,
+      "intervention_std": 3.061224489795919,
+      "safe_mean": 100.0,
+      "p_mean": 2.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_2.0_tgap_2.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4897959183673469,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 8.422132567483551,
+          "avg_barrier": 4.349656070981707,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.7122575640678406
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_2.0_tgap_2.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.42857142857142855,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 8.323319471612269,
+          "avg_barrier": 4.487070314738215,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.706807106733322
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_2.0_tgap_3.0",
+      "intervention_mean": 53.57142857142857,
+      "intervention_std": 4.591836734693877,
+      "safe_mean": 97.95918367346938,
+      "p_mean": 2.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_2.0_tgap_3.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.5816326530612245,
+          "cbf_safe_rate": 0.9897959183673469,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 5.445616089567846,
+          "avg_barrier": 2.275097997821107,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.16,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.1272874617576598
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.414073595777154
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.4412738233804703
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0008996725082397
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_2.0_tgap_3.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4897959183673469,
+          "cbf_safe_rate": 0.9693877551020408,
+          "avg_p": 2.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 5.201315693709315,
+          "avg_barrier": 2.4746988160269603,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 2.0,
+              "avg_abs_u": 0.8736976519227028
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.691136956214905
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 2.0,
+              "avg_abs_u": 2.4005776904523373
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 2.0,
+              "avg_abs_u": 3.0074963122606277
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_3.0_tgap_1.5",
+      "intervention_mean": 44.89795918367347,
+      "intervention_std": 3.061224489795916,
+      "safe_mean": 100.0,
+      "p_mean": 3.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_3.0_tgap_1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.47959183673469385,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 15.432042837142944,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_3.0_tgap_1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.41836734693877553,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 15.480144568852015,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 2.709563672542572
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 3.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3A_fixedP_4.0_tgap_1.5",
+      "intervention_mean": 46.93877551020408,
+      "intervention_std": 2.040816326530612,
+      "safe_mean": 100.0,
+      "p_mean": 4.0,
+      "p_std": 0.0,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3A_fixedP_4.0_tgap_1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4897959183673469,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "std_p": 0.0,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 20.76801429476057,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 2.3733988106250763
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3A_fixedP_4.0_tgap_1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4489795918367347,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "std_p": 0.0,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 20.986780283402425,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.08,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 1.0086552396416664
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 2.6341964304447174
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 2.709563672542572
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 4.0,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax2.0_T0.5_tgap1.5",
+      "intervention_mean": 86.22448979591837,
+      "intervention_std": 3.57142857142857,
+      "safe_mean": 98.9795918367347,
+      "p_mean": 0.12155522508736777,
+      "p_std": 0.018606994491146535,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax2.0_T0.5_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8979591836734694,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1401622195785143,
+          "std_p": 0.2684446366903899,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 1.222622422539458,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10159911215305328,
+              "avg_abs_u": 0.44629583895206454
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.2534850066900253,
+              "avg_abs_u": 1.3232525408267974
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10121278651058674,
+              "avg_abs_u": 2.4270055294036865
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10154737997800112,
+              "avg_abs_u": 2.589782003313303
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10091449273750186,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax2.0_T0.5_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.826530612244898,
+          "cbf_safe_rate": 0.9795918367346939,
+          "avg_p": 0.10294823059622123,
+          "std_p": 0.013613593922895986,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 0.9960855683501886,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.10159977674484252,
+              "avg_abs_u": 0.5062252162769437
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.6,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.1075248447060585,
+              "avg_abs_u": 0.9994733214378357
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1012276946566999,
+              "avg_abs_u": 2.661594867706299
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10155569296330214,
+              "avg_abs_u": 2.1083933748304844
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1010173037648201,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4.0_T0.1_tgap1.5",
+      "intervention_mean": 85.71428571428572,
+      "intervention_std": 4.081632653061224,
+      "safe_mean": 99.48979591836735,
+      "p_mean": 0.1397959749233358,
+      "p_std": 0.03979586327106369,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T0.1_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8979591836734694,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.17959183819439947,
+          "std_p": 0.5514284201581767,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 1.3740136307113024,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 0.4505396218597889
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.4120000013709068,
+              "avg_abs_u": 1.3269890713691712
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 2.427733264863491
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 2.5910405330359936
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T0.1_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8163265306122449,
+          "cbf_safe_rate": 0.9897959183673469,
+          "avg_p": 0.10000011165227209,
+          "std_p": 1.0849714092760183e-06,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 0.9980594576621542,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 0.5104137404263019
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.56,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000043332576752,
+              "avg_abs_u": 1.0336434680223465
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 2.6618222072720528
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 2.111306991428137
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10000000149011612,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4.0_T0.5_tgap1.5",
+      "intervention_mean": 86.22448979591837,
+      "intervention_std": 3.57142857142857,
+      "safe_mean": 98.9795918367347,
+      "p_mean": 0.1442449340330703,
+      "p_std": 0.038193305194073796,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T0.5_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8979591836734694,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.18243823922714408,
+          "std_p": 0.5510179386087465,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 1.3786121320967772,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1032823857665062,
+              "avg_abs_u": 0.4418287068605423
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.415048171877861,
+              "avg_abs_u": 1.3193193435668946
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1024894043803215,
+              "avg_abs_u": 2.426239475607872
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10317620076239109,
+              "avg_abs_u": 2.588457230478525
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10187711380422115,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T0.5_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.826530612244898,
+          "cbf_safe_rate": 0.9795918367346939,
+          "avg_p": 0.10605162883899649,
+          "std_p": 0.02794369393129346,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 1.0059789625965818,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.10328375101089478,
+              "avg_abs_u": 0.5018162510311232
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.6,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.11544573217630387,
+              "avg_abs_u": 0.9947879672050476
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10252000158652663,
+              "avg_abs_u": 2.6613555625081062
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10319326119497418,
+              "avg_abs_u": 2.105326432734728
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10208814637735486,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4.0_T2.0_tgap1.5",
+      "intervention_mean": 47.44897959183674,
+      "intervention_std": 3.5714285714285725,
+      "safe_mean": 100.0,
+      "p_mean": 0.6911879476844048,
+      "p_std": 0.02741168925956805,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T2.0_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.5102040816326531,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.7185996369439729,
+          "std_p": 0.474524416625452,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 3.1806250603831545,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6676942849159241,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.9344002962112427,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6336332112550735,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.663689199835062,
+              "avg_abs_u": 2.387688153423369
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6008275821805,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4.0_T2.0_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4387755102040816,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6637762584248368,
+          "std_p": 0.09158897967712072,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 2.8270298072269986,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6677418375015258,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.7135892271995544,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6302710883319378,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6642199195921421,
+              "avg_abs_u": 2.2863547019660473
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6128087863326073,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4_T0.5_tgap_1.0",
+      "intervention_mean": 88.26530612244898,
+      "intervention_std": 3.57142857142857,
+      "safe_mean": 100.0,
+      "p_mean": 0.1442449340330703,
+      "p_std": 0.038193305194073796,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_1.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.9183673469387755,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.18243823922714408,
+          "std_p": 0.5510179386087465,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 0.7831113563508404,
+          "avg_barrier": 6.424214107649667,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1032823857665062,
+              "avg_abs_u": 0.6078635001182556
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.415048171877861,
+              "avg_abs_u": 1.4503696012496947
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1024894043803215,
+              "avg_abs_u": 2.6288340389728546
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10317620076239109,
+              "avg_abs_u": 2.724972829222679
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10187711380422115,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_1.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8469387755102041,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10605162883899649,
+          "std_p": 0.02794369393129346,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 0.411348396418046,
+          "avg_barrier": 6.499441866972009,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10328375101089478,
+              "avg_abs_u": 0.6960805749893189
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.56,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.11544573217630387,
+              "avg_abs_u": 1.1466770100593566
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.9375,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10252000158652663,
+              "avg_abs_u": 2.7341107204556465
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10319326119497418,
+              "avg_abs_u": 2.2948343344032764
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10208814637735486,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4_T0.5_tgap_2.0",
+      "intervention_mean": 85.71428571428572,
+      "intervention_std": 4.081632653061224,
+      "safe_mean": 100.0,
+      "p_mean": 0.1442449340330703,
+      "p_std": 0.038193305194073796,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_2.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8979591836734694,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.18243823922714408,
+          "std_p": 0.5510179386087465,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 1.9845832634945304,
+          "avg_barrier": 4.349656070981707,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1032823857665062,
+              "avg_abs_u": 0.35923856139183047
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.415048171877861,
+              "avg_abs_u": 1.2537942028045654
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1024894043803215,
+              "avg_abs_u": 2.3570077940821648
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10317620076239109,
+              "avg_abs_u": 2.5201994329690933
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10187711380422115,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_2.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8163265306122449,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10605162883899649,
+          "std_p": 0.02794369393129346,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 1.6174579864862013,
+          "avg_barrier": 4.487070314738215,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10328375101089478,
+              "avg_abs_u": 0.40645442724227904
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.56,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.11544573217630387,
+              "avg_abs_u": 0.9376653730869293
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10252000158652663,
+              "avg_abs_u": 2.6471672020852566
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10319326119497418,
+              "avg_abs_u": 2.0105724819004536
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10208814637735486,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.1_pmax4_T0.5_tgap_3.0",
+      "intervention_mean": 87.24489795918367,
+      "intervention_std": 2.5510204081632626,
+      "safe_mean": 97.95918367346938,
+      "p_mean": 0.1442449340330703,
+      "p_std": 0.038193305194073796,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_3.0_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8979591836734694,
+          "cbf_safe_rate": 0.9897959183673469,
+          "avg_p": 0.18243823922714408,
+          "std_p": 0.5510179386087465,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 3.148021616497818,
+          "avg_barrier": 2.275097997821107,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1032823857665062,
+              "avg_abs_u": 0.27711912751197815
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.72,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.415048171877861,
+              "avg_abs_u": 1.121503049135208
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.1024894043803215,
+              "avg_abs_u": 2.2930690832436085
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10317620076239109,
+              "avg_abs_u": 2.451941642910242
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10187711380422115,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.1_pmax4_T0.5_tgap_3.0_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.8469387755102041,
+          "cbf_safe_rate": 0.9693877551020408,
+          "avg_p": 0.10605162883899649,
+          "std_p": 0.02794369393129346,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 2.7532332168549907,
+          "avg_barrier": 2.4746988160269603,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.10328375101089478,
+              "avg_abs_u": 0.3153210868313909
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.68,
+              "cbf_safe_rate": 0.96,
+              "avg_p": 0.11544573217630387,
+              "avg_abs_u": 0.7666238552331924
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.75,
+              "cbf_safe_rate": 0.9375,
+              "avg_p": 0.10252000158652663,
+              "avg_abs_u": 2.6329788379371166
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10319326119497418,
+              "avg_abs_u": 1.9158185366541147
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.10208814637735486,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin0.5_pmax4.0_T1.0_tgap1.5",
+      "intervention_mean": 47.44897959183674,
+      "intervention_std": 3.5714285714285725,
+      "safe_mean": 100.0,
+      "p_mean": 0.6318973044351656,
+      "p_std": 0.03001272222217244,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin0.5_pmax4.0_T1.0_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.5102040816326531,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.661910026657338,
+          "std_p": 0.4819285529897346,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 2.846317091766669,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5987153005599976,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.870997519493103,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5859722904860973,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5971424244344234,
+              "avg_abs_u": 2.357322519645095
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5746579170227051,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin0.5_pmax4.0_T1.0_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.4387755102040816,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6018845822129931,
+          "std_p": 0.07037773966221973,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 2.48145261832646,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5987345147132873,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.6332964205741882,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5854117684066296,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.5973674058914185,
+              "avg_abs_u": 2.1728127785027027
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 0.578715555369854,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    },
+    {
+      "config": "V3B_pmin1.0_pmax4.0_T2.0_tgap1.5",
+      "intervention_mean": 44.89795918367347,
+      "intervention_std": 3.061224489795916,
+      "safe_mean": 100.0,
+      "p_mean": 1.4547599353352372,
+      "p_std": 0.02108591369220192,
+      "runs": 2,
+      "details": [
+        {
+          "name": "V3B_pmin1.0_pmax4.0_T2.0_tgap1.5_run1",
+          "total_scenarios": 98,
+          "intervention_rate": 0.47959183673469385,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.475845849027439,
+          "std_p": 0.36501878494186957,
+          "avg_B": 1.8935038873127528,
+          "avg_margin": 7.1847856239396695,
+          "avg_barrier": 5.386935092964951,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.2,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4366878843307496,
+              "avg_abs_u": 1.9532281947135925
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.641846351623535,
+              "avg_abs_u": 1.1828837192058563
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.625,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.410487063229084,
+              "avg_abs_u": 2.2581728249788284
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.8125,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4336070343852043,
+              "avg_abs_u": 2.721396930515766
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.385251984000206,
+              "avg_abs_u": 3.0
+            }
+          }
+        },
+        {
+          "name": "V3B_pmin1.0_pmax4.0_T2.0_tgap1.5_run2",
+          "total_scenarios": 98,
+          "intervention_rate": 0.41836734693877553,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4336740216430353,
+          "std_p": 0.07045306993122977,
+          "avg_B": 1.4282288654726378,
+          "avg_margin": 6.915457331404394,
+          "avg_barrier": 5.493256109101432,
+          "by_type": {
+            "safe": {
+              "n": 25,
+              "intervention_rate": 0.12,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4367244672775268,
+              "avg_abs_u": 1.8342641124129295
+            },
+            "moderate": {
+              "n": 25,
+              "intervention_rate": 0.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4719917011260986,
+              "avg_abs_u": 0.9889124456048012
+            },
+            "dangerous": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4079008176922798,
+              "avg_abs_u": 2.6104114055633545
+            },
+            "high_noise": {
+              "n": 16,
+              "intervention_rate": 0.6875,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.4340152814984322,
+              "avg_abs_u": 2.709563672542572
+            },
+            "extreme": {
+              "n": 16,
+              "intervention_rate": 1.0,
+              "cbf_safe_rate": 1.0,
+              "avg_p": 1.3944682702422142,
+              "avg_abs_u": 3.0
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "all_summaries": [
+    {
+      "name": "Baseline_NoQP_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.0,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.0,
+      "std_p": 0.0,
+      "avg_B": 0.0,
+      "avg_margin": 0.0,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "Baseline_NoQP_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.0,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.0,
+      "std_p": 0.0,
+      "avg_B": 0.0,
+      "avg_margin": 0.0,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 2.709563684184104
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_0.5_tgap_1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.6020408163265306,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.5,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 2.0992342975674845,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.52,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 1.9132462525367737
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 2.2601091666147113
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 2.34563690982759
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_0.5_tgap_1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.5,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.5,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 1.966489395924977,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.36,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 1.79414116948843
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 2.0112015772610903
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_1.0_tgap_1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.5,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 1.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 4.681044790209556,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.9375,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 2.628002315759659
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_1.0_tgap_1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.42857142857142855,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 1.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 4.507019281387329,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 2.6759702311828732
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.47959183673469385,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 10.045107812297587,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.42857142857142855,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 9.991062400292376,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.7266072630882263
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_3.0_tgap_1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.47959183673469385,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 3.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 15.432042837142944,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_3.0_tgap_1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.41836734693877553,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 3.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 15.480144568852015,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 2.709563672542572
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 3.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_4.0_tgap_1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4897959183673469,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 4.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 20.76801429476057,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 2.3733988106250763
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_4.0_tgap_1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4489795918367347,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 4.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 20.986780283402425,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.08,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 1.0086552396416664
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 2.6341964304447174
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 2.709563672542572
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 4.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T0.5_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8979591836734694,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.18243823922714408,
+      "std_p": 0.5510179386087465,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 1.3786121320967772,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1032823857665062,
+          "avg_abs_u": 0.4418287068605423
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.415048171877861,
+          "avg_abs_u": 1.3193193435668946
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1024894043803215,
+          "avg_abs_u": 2.426239475607872
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10317620076239109,
+          "avg_abs_u": 2.588457230478525
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10187711380422115,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T0.5_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.826530612244898,
+      "cbf_safe_rate": 0.9795918367346939,
+      "avg_p": 0.10605162883899649,
+      "std_p": 0.02794369393129346,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 1.0059789625965818,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.10328375101089478,
+          "avg_abs_u": 0.5018162510311232
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.6,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.11544573217630387,
+          "avg_abs_u": 0.9947879672050476
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10252000158652663,
+          "avg_abs_u": 2.6613555625081062
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10319326119497418,
+          "avg_abs_u": 2.105326432734728
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10208814637735486,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.5_pmax4.0_T1.0_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.5102040816326531,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.661910026657338,
+      "std_p": 0.4819285529897346,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 2.846317091766669,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5987153005599976,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.870997519493103,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5859722904860973,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5971424244344234,
+          "avg_abs_u": 2.357322519645095
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5746579170227051,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.5_pmax4.0_T1.0_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4387755102040816,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.6018845822129931,
+      "std_p": 0.07037773966221973,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 2.48145261832646,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5987345147132873,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6332964205741882,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5854117684066296,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.5973674058914185,
+          "avg_abs_u": 2.1728127785027027
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.578715555369854,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin1.0_pmax4.0_T2.0_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.47959183673469385,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 1.475845849027439,
+      "std_p": 0.36501878494186957,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 7.1847856239396695,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4366878843307496,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.641846351623535,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.410487063229084,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4336070343852043,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.385251984000206,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin1.0_pmax4.0_T2.0_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.41836734693877553,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 1.4336740216430353,
+      "std_p": 0.07045306993122977,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 6.915457331404394,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4367244672775268,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4719917011260986,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4079008176922798,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.4340152814984322,
+          "avg_abs_u": 2.709563672542572
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 1.3944682702422142,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax2.0_T0.5_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8979591836734694,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.1401622195785143,
+      "std_p": 0.2684446366903899,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 1.222622422539458,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10159911215305328,
+          "avg_abs_u": 0.44629583895206454
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.2534850066900253,
+          "avg_abs_u": 1.3232525408267974
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10121278651058674,
+          "avg_abs_u": 2.4270055294036865
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10154737997800112,
+          "avg_abs_u": 2.589782003313303
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10091449273750186,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax2.0_T0.5_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.826530612244898,
+      "cbf_safe_rate": 0.9795918367346939,
+      "avg_p": 0.10294823059622123,
+      "std_p": 0.013613593922895986,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 0.9960855683501886,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.10159977674484252,
+          "avg_abs_u": 0.5062252162769437
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.6,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.1075248447060585,
+          "avg_abs_u": 0.9994733214378357
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1012276946566999,
+          "avg_abs_u": 2.661594867706299
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10155569296330214,
+          "avg_abs_u": 2.1083933748304844
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1010173037648201,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T0.1_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8979591836734694,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.17959183819439947,
+      "std_p": 0.5514284201581767,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 1.3740136307113024,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 0.4505396218597889
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.4120000013709068,
+          "avg_abs_u": 1.3269890713691712
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 2.427733264863491
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 2.5910405330359936
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T0.1_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8163265306122449,
+      "cbf_safe_rate": 0.9897959183673469,
+      "avg_p": 0.10000011165227209,
+      "std_p": 1.0849714092760183e-06,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 0.9980594576621542,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 0.5104137404263019
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.56,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000043332576752,
+          "avg_abs_u": 1.0336434680223465
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 2.6618222072720528
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 2.111306991428137
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10000000149011612,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T2.0_tgap1.5_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.5102040816326531,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.7185996369439729,
+      "std_p": 0.474524416625452,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 3.1806250603831545,
+      "avg_barrier": 5.386935092964951,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6676942849159241,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.9344002962112427,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6336332112550735,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.663689199835062,
+          "avg_abs_u": 2.387688153423369
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6008275821805,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4.0_T2.0_tgap1.5_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4387755102040816,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.6637762584248368,
+      "std_p": 0.09158897967712072,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 2.8270298072269986,
+      "avg_barrier": 5.493256109101432,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6677418375015258,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.7135892271995544,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6302710883319378,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6642199195921421,
+          "avg_abs_u": 2.2863547019660473
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.6128087863326073,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_1.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.47959183673469385,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 11.671067296242228,
+      "avg_barrier": 6.424214107649667,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.721396930515766
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_1.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4387755102040816,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 11.665276610121435,
+      "avg_barrier": 6.499441866972009,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.731608971953392
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_1.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.9183673469387755,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.18243823922714408,
+      "std_p": 0.5510179386087465,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 0.7831113563508404,
+      "avg_barrier": 6.424214107649667,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1032823857665062,
+          "avg_abs_u": 0.6078635001182556
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.415048171877861,
+          "avg_abs_u": 1.4503696012496947
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1024894043803215,
+          "avg_abs_u": 2.6288340389728546
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10317620076239109,
+          "avg_abs_u": 2.724972829222679
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10187711380422115,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_1.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8469387755102041,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.10605162883899649,
+      "std_p": 0.02794369393129346,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 0.411348396418046,
+      "avg_barrier": 6.499441866972009,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10328375101089478,
+          "avg_abs_u": 0.6960805749893189
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.56,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.11544573217630387,
+          "avg_abs_u": 1.1466770100593566
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.9375,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10252000158652663,
+          "avg_abs_u": 2.7341107204556465
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10319326119497418,
+          "avg_abs_u": 2.2948343344032764
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10208814637735486,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_2.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4897959183673469,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 8.422132567483551,
+      "avg_barrier": 4.349656070981707,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.1828837192058563
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.625,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.2581728249788284
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.7122575640678406
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_2.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.42857142857142855,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 8.323319471612269,
+      "avg_barrier": 4.487070314738215,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 0.9889124456048012
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.6875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.6104114055633545
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.706807106733322
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_2.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8979591836734694,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.18243823922714408,
+      "std_p": 0.5510179386087465,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 1.9845832634945304,
+      "avg_barrier": 4.349656070981707,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1032823857665062,
+          "avg_abs_u": 0.35923856139183047
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.415048171877861,
+          "avg_abs_u": 1.2537942028045654
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.875,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1024894043803215,
+          "avg_abs_u": 2.3570077940821648
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10317620076239109,
+          "avg_abs_u": 2.5201994329690933
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10187711380422115,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_2.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8163265306122449,
+      "cbf_safe_rate": 1.0,
+      "avg_p": 0.10605162883899649,
+      "std_p": 0.02794369393129346,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 1.6174579864862013,
+      "avg_barrier": 4.487070314738215,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10328375101089478,
+          "avg_abs_u": 0.40645442724227904
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.56,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.11544573217630387,
+          "avg_abs_u": 0.9376653730869293
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10252000158652663,
+          "avg_abs_u": 2.6471672020852566
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10319326119497418,
+          "avg_abs_u": 2.0105724819004536
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10208814637735486,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_3.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.5816326530612245,
+      "cbf_safe_rate": 0.9897959183673469,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 5.445616089567846,
+      "avg_barrier": 2.275097997821107,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.2,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.9532281947135925
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.16,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.1272874617576598
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.414073595777154
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.4412738233804703
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0008996725082397
+        }
+      }
+    },
+    {
+      "name": "V3A_fixedP_2.0_tgap_3.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.4897959183673469,
+      "cbf_safe_rate": 0.9693877551020408,
+      "avg_p": 2.0,
+      "std_p": 0.0,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 5.201315693709315,
+      "avg_barrier": 2.4746988160269603,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 1.8342641124129295
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.12,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 2.0,
+          "avg_abs_u": 0.8736976519227028
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.691136956214905
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 2.0,
+          "avg_abs_u": 2.4005776904523373
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 2.0,
+          "avg_abs_u": 3.0074963122606277
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_3.0_run1",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8979591836734694,
+      "cbf_safe_rate": 0.9897959183673469,
+      "avg_p": 0.18243823922714408,
+      "std_p": 0.5510179386087465,
+      "avg_B": 1.8935038873127528,
+      "avg_margin": 3.148021616497818,
+      "avg_barrier": 2.275097997821107,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1032823857665062,
+          "avg_abs_u": 0.27711912751197815
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.72,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.415048171877861,
+          "avg_abs_u": 1.121503049135208
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.1024894043803215,
+          "avg_abs_u": 2.2930690832436085
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10317620076239109,
+          "avg_abs_u": 2.451941642910242
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10187711380422115,
+          "avg_abs_u": 3.0
+        }
+      }
+    },
+    {
+      "name": "V3B_pmin0.1_pmax4_T0.5_tgap_3.0_run2",
+      "total_scenarios": 98,
+      "intervention_rate": 0.8469387755102041,
+      "cbf_safe_rate": 0.9693877551020408,
+      "avg_p": 0.10605162883899649,
+      "std_p": 0.02794369393129346,
+      "avg_B": 1.4282288654726378,
+      "avg_margin": 2.7532332168549907,
+      "avg_barrier": 2.4746988160269603,
+      "by_type": {
+        "safe": {
+          "n": 25,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.10328375101089478,
+          "avg_abs_u": 0.3153210868313909
+        },
+        "moderate": {
+          "n": 25,
+          "intervention_rate": 0.68,
+          "cbf_safe_rate": 0.96,
+          "avg_p": 0.11544573217630387,
+          "avg_abs_u": 0.7666238552331924
+        },
+        "dangerous": {
+          "n": 16,
+          "intervention_rate": 0.75,
+          "cbf_safe_rate": 0.9375,
+          "avg_p": 0.10252000158652663,
+          "avg_abs_u": 2.6329788379371166
+        },
+        "high_noise": {
+          "n": 16,
+          "intervention_rate": 0.8125,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10319326119497418,
+          "avg_abs_u": 1.9158185366541147
+        },
+        "extreme": {
+          "n": 16,
+          "intervention_rate": 1.0,
+          "cbf_safe_rate": 1.0,
+          "avg_p": 0.10208814637735486,
+          "avg_abs_u": 3.0
+        }
+      }
+    }
+  ]
+}
