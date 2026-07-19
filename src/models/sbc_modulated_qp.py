@@ -25,7 +25,7 @@ from torch.autograd import Variable
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', 'artical-F122'))
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..', '..', '..', '实验v2', 'code', 'models'))
 
-from models.cbf_constraints import AEBSCBFConstraints
+from src.models.cbf_constraints import AEBSCBFConstraints
 
 
 class SBCModulatedQPShield:
@@ -176,30 +176,81 @@ class SBCModulatedQPShield:
 
         return u_safe, info
 
-    def _solve_cvxopt_batch(self, Q, q, G, h, u_ref):
-        """Solve QP using cvxopt for a batch."""
-        from cvxopt import solvers, matrix
-        solvers.options['show_progress'] = False
+    def _solve_qp_1d_analytic(self, u_ref, G, h):
+        """
+        Analytic solution for 1D QP: min ½(u-u_ref)² s.t. G·u ≤ h.
 
-        batch_size = Q.shape[0]
+        For scalar u, constraint a_i·u ≤ b_i means:
+        - If a_i > 0: u ≤ b_i/a_i (upper bound)
+        - If a_i < 0: u ≥ b_i/a_i (lower bound)
+
+        Solution: u* = clip(u_ref, max_lower, min_upper)
+        where the constraint is infeasible if max_lower > min_upper.
+        """
+        batch_size = u_ref.shape[0]
+        device = u_ref.device
         results = []
 
         for i in range(batch_size):
-            Q_np = Q[i].detach().cpu().numpy()
-            q_np = q[i].detach().cpu().numpy()
-            G_np = G[i].detach().cpu().numpy()
-            h_np = h[i].detach().cpu().numpy()
+            u0 = u_ref[i].item()
+            G_i = G[i].squeeze(-1).cpu().numpy()  # (m,)
+            h_i = h[i].cpu().numpy()  # (m,)
 
+            lower_bounds = [-3.0]  # Default control bound
+            upper_bounds = [3.0]   # Default control bound
+
+            for j in range(len(G_i)):
+                a = G_i[j]
+                b = h_i[j]
+                if abs(a) < 1e-10:
+                    if b < -1e-10:
+                        # 0 ≤ b but b < 0 → constraint already violated → infeasible
+                        upper_bounds.append(-float('inf'))
+                    continue
+                bound = b / a
+                if a > 0:
+                    upper_bounds.append(bound)  # a*u ≤ b → u ≤ b/a
+                else:
+                    lower_bounds.append(bound)  # a*u ≤ b, a<0 → u ≥ b/a
+
+            u_lower = max(lower_bounds)
+            u_upper = min(upper_bounds)
+
+            if u_lower > u_upper + 1e-6:
+                # Infeasible: choose closest feasible point
+                u_star = (u_lower + u_upper) / 2.0
+            else:
+                u_star = np.clip(u0, u_lower, u_upper)
+
+            results.append(torch.tensor(u_star, dtype=torch.float32, device=device))
+
+        return torch.stack(results).reshape(batch_size, 1)
+
+    def _solve_cvxopt_batch(self, Q, q, G, h, u_ref):
+        """Solve QP using analytic method for 1D, cvxopt as fallback."""
+        batch_size = Q.shape[0]
+        n_ctrl = Q.shape[-1]
+
+        if n_ctrl == 1:
+            return self._solve_qp_1d_analytic(u_ref, G, h)
+
+        # For multi-dimensional controls, use cvxopt
+        from cvxopt import solvers, matrix
+        solvers.options['show_progress'] = False
+
+        results = []
+        for i in range(batch_size):
             try:
-                sol = solvers.qp(matrix(Q_np), matrix(q_np),
-                                 matrix(G_np), matrix(h_np))
+                sol = solvers.qp(matrix(Q[i].cpu().numpy()),
+                                 matrix(q[i].cpu().numpy()),
+                                 matrix(G[i].cpu().numpy()),
+                                 matrix(h[i].cpu().numpy()))
                 u = np.array(sol['x']).squeeze()
             except Exception:
                 u = u_ref[i].detach().cpu().numpy().squeeze()
-
             results.append(torch.tensor(u, dtype=torch.float32))
 
-        return torch.stack(results).to(u_ref.device).reshape(batch_size, 1)
+        return torch.stack(results).to(u_ref.device).reshape(batch_size, -1)
 
     def get_stats(self):
         """Get shield statistics."""

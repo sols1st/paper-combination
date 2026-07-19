@@ -58,6 +58,14 @@ def load_all_models(device='cpu'):
     p_net.eval()
 
     sbc = MLP([2, 16, 8, 1], activation="tanh", square_output=True).to(device)
+
+    # Load trained SBC if available
+    sbc_path = os.path.join(ROOT, '实验v3', 'results', 'trained_sbc.pth')
+    if os.path.exists(sbc_path):
+        sbc.load_state_dict(torch.load(sbc_path, map_location=device))
+        print(f"  Loaded trained SBC from {sbc_path}")
+    else:
+        print(f"  WARNING: No trained SBC found at {sbc_path}, using random weights")
     sbc.eval()
 
     qp_ctrl = QPAebsController(
