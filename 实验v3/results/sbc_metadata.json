@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-07-20T04:45:30.435622",
+  "training_iters": 120,
+  "final_prob_bound": 0.9657501632080997,
+  "sbc_B_range": [
+    0.02210509590804577,
+    35.56911087036133
+  ],
+  "sbc_B_mean": 26.656274795532227,
+  "training_time": 412.6905176639557,
+  "model_arch": "MLP[2,32,16,8,1]",
+  "activation": "tanh",
+  "square_output": true
+}
